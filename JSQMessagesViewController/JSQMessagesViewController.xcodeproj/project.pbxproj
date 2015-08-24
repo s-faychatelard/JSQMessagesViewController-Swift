@@ -14,7 +14,7 @@
 		E483D7E71B849CF100C490B9 /* JSQMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E483D7CC1B84981F00C490B9 /* JSQMessagesAssets.bundle */; };
 		E483D7EA1B84A00300C490B9 /* JSQMessagesKeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483D7E91B84A00300C490B9 /* JSQMessagesKeyboardController.swift */; };
 		E483D7EC1B84A03A00C490B9 /* JSQMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483D7EB1B84A03A00C490B9 /* JSQMessagesViewController.swift */; };
-		E483D7F01B84A0CB00C490B9 /* JSQSystemSoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483D7EF1B84A0CB00C490B9 /* JSQSystemSoundPlayer.swift */; };
+		E483D7F01B84A0CB00C490B9 /* JSQSystemSoundPlayer+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483D7EF1B84A0CB00C490B9 /* JSQSystemSoundPlayer+Messages.swift */; };
 		E483D8301B84A86800C490B9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483D82F1B84A86800C490B9 /* String.swift */; };
 		E483D8321B84A8A100C490B9 /* String_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483D8311B84A8A100C490B9 /* String_Tests.swift */; };
 		E483D8341B84AA9700C490B9 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483D8331B84AA9700C490B9 /* UIColor.swift */; };
@@ -90,6 +90,10 @@
 		E4DB242B1B8710FC00E25818 /* JSQMessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4DB242A1B8710FC00E25818 /* JSQMessagesViewController.xib */; };
 		E4DB242D1B8732D100E25818 /* JSQMessagesInputToolbar_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB242C1B8732D100E25818 /* JSQMessagesInputToolbar_Tests.swift */; };
 		E4DB242F1B87352B00E25818 /* JSQMessagesViewController_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB242E1B87352B00E25818 /* JSQMessagesViewController_Tests.swift */; };
+		E4DB25041B8B033E00E25818 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4DB24D81B8B033D00E25818 /* Info.plist */; };
+		E4DB25051B8B033E00E25818 /* JSQSystemSoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB24D91B8B033D00E25818 /* JSQSystemSoundPlayer.swift */; };
+		E4DB25311B8B03A600E25818 /* SystemSoundHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E4DB252F1B8B03A600E25818 /* SystemSoundHelper.h */; };
+		E4DB25321B8B03A600E25818 /* SystemSoundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DB25301B8B03A600E25818 /* SystemSoundHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,34 +103,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = E4287F8C1B7CC547003E1072;
 			remoteInfo = JSQMessagesViewController;
-		};
-		E4DB24701B873CD900E25818 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E483D8201B84A66B00C490B9 /* JSQSystemSoundPlayer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E4287FC21B7CC5DE003E1072;
-			remoteInfo = "JSQSystemSoundPlayer-iOS";
-		};
-		E4DB24721B873CD900E25818 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E483D8201B84A66B00C490B9 /* JSQSystemSoundPlayer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 61377F7D1B81D93A00CD490D;
-			remoteInfo = "JSQSystemSoundPlayer-OSX";
-		};
-		E4DB24741B873CD900E25818 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E483D8201B84A66B00C490B9 /* JSQSystemSoundPlayer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 61377F201B81C69300CD490D;
-			remoteInfo = "JSQSystemSoundPlayer Tests";
-		};
-		E4DB24B91B87858500E25818 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E483D8201B84A66B00C490B9 /* JSQSystemSoundPlayer.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E4287FC11B7CC5DE003E1072;
-			remoteInfo = "JSQSystemSoundPlayer-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -141,8 +117,7 @@
 		E483D7E21B84997D00C490B9 /* NSBundle_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSBundle_Tests.swift; path = CategoryTests/NSBundle_Tests.swift; sourceTree = "<group>"; };
 		E483D7E91B84A00300C490B9 /* JSQMessagesKeyboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSQMessagesKeyboardController.swift; path = Controllers/JSQMessagesKeyboardController.swift; sourceTree = "<group>"; };
 		E483D7EB1B84A03A00C490B9 /* JSQMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSQMessagesViewController.swift; path = Controllers/JSQMessagesViewController.swift; sourceTree = "<group>"; };
-		E483D7EF1B84A0CB00C490B9 /* JSQSystemSoundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSQSystemSoundPlayer.swift; path = Categories/JSQSystemSoundPlayer.swift; sourceTree = "<group>"; };
-		E483D8201B84A66B00C490B9 /* JSQSystemSoundPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JSQSystemSoundPlayer.xcodeproj; path = "../../JSQSystemSoundPlayer-Swift/JSQSystemSoundPlayer/JSQSystemSoundPlayer.xcodeproj"; sourceTree = "<group>"; };
+		E483D7EF1B84A0CB00C490B9 /* JSQSystemSoundPlayer+Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "JSQSystemSoundPlayer+Messages.swift"; path = "Categories/JSQSystemSoundPlayer+Messages.swift"; sourceTree = "<group>"; };
 		E483D82F1B84A86800C490B9 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Categories/String.swift; sourceTree = "<group>"; };
 		E483D8311B84A8A100C490B9 /* String_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String_Tests.swift; path = CategoryTests/String_Tests.swift; sourceTree = "<group>"; };
 		E483D8331B84AA9700C490B9 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Categories/UIColor.swift; sourceTree = "<group>"; };
@@ -217,6 +192,10 @@
 		E4DB242A1B8710FC00E25818 /* JSQMessagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JSQMessagesViewController.xib; path = Controllers/JSQMessagesViewController.xib; sourceTree = "<group>"; };
 		E4DB242C1B8732D100E25818 /* JSQMessagesInputToolbar_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSQMessagesInputToolbar_Tests.swift; path = ViewTests/JSQMessagesInputToolbar_Tests.swift; sourceTree = "<group>"; };
 		E4DB242E1B87352B00E25818 /* JSQMessagesViewController_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSQMessagesViewController_Tests.swift; path = ControllerTests/JSQMessagesViewController_Tests.swift; sourceTree = "<group>"; };
+		E4DB24D81B8B033D00E25818 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4DB24D91B8B033D00E25818 /* JSQSystemSoundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSQSystemSoundPlayer.swift; sourceTree = "<group>"; };
+		E4DB252F1B8B03A600E25818 /* SystemSoundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSoundHelper.h; sourceTree = "<group>"; };
+		E4DB25301B8B03A600E25818 /* SystemSoundHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSoundHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,7 +222,7 @@
 		E4287F831B7CC547003E1072 = {
 			isa = PBXGroup;
 			children = (
-				E483D8201B84A66B00C490B9 /* JSQSystemSoundPlayer.xcodeproj */,
+				E4DB24D31B8B033D00E25818 /* 3rd party */,
 				E4287F8F1B7CC547003E1072 /* JSQMessagesViewController */,
 				E483D7D61B84994F00C490B9 /* JSQMessagesViewController Tests */,
 				E4287F8E1B7CC547003E1072 /* Products */,
@@ -295,7 +274,7 @@
 		E483D7CE1B84985C00C490B9 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				E483D7EF1B84A0CB00C490B9 /* JSQSystemSoundPlayer.swift */,
+				E483D7EF1B84A0CB00C490B9 /* JSQSystemSoundPlayer+Messages.swift */,
 				E483D7CF1B84988200C490B9 /* NSBundle.swift */,
 				E483D82F1B84A86800C490B9 /* String.swift */,
 				E483D8331B84AA9700C490B9 /* UIColor.swift */,
@@ -484,14 +463,56 @@
 			name = ControllerTests;
 			sourceTree = "<group>";
 		};
-		E4DB246B1B873CD900E25818 /* Products */ = {
+		E4DB24D31B8B033D00E25818 /* 3rd party */ = {
 			isa = PBXGroup;
 			children = (
-				E4DB24711B873CD900E25818 /* JSQSystemSoundPlayer.framework */,
-				E4DB24731B873CD900E25818 /* JSQSystemSoundPlayer.framework */,
-				E4DB24751B873CD900E25818 /* JSQSystemSoundPlayer Tests.xctest */,
+				E4DB24D41B8B033D00E25818 /* JSQSystemSoundPlayer-Swift */,
 			);
-			name = Products;
+			name = "3rd party";
+			path = "JSQMessagesViewController/3rd party";
+			sourceTree = "<group>";
+		};
+		E4DB24D41B8B033D00E25818 /* JSQSystemSoundPlayer-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				E4DB24D61B8B033D00E25818 /* JSQSystemSoundPlayer */,
+			);
+			path = "JSQSystemSoundPlayer-Swift";
+			sourceTree = "<group>";
+		};
+		E4DB24D61B8B033D00E25818 /* JSQSystemSoundPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				E4DB24D71B8B033D00E25818 /* JSQSystemSoundPlayer */,
+			);
+			path = JSQSystemSoundPlayer;
+			sourceTree = "<group>";
+		};
+		E4DB24D71B8B033D00E25818 /* JSQSystemSoundPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				E4DB25361B8B044000E25818 /* Helper */,
+				E4DB24D91B8B033D00E25818 /* JSQSystemSoundPlayer.swift */,
+				E4DB25351B8B042E00E25818 /* Supporting Files */,
+			);
+			path = JSQSystemSoundPlayer;
+			sourceTree = "<group>";
+		};
+		E4DB25351B8B042E00E25818 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E4DB24D81B8B033D00E25818 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E4DB25361B8B044000E25818 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				E4DB252F1B8B03A600E25818 /* SystemSoundHelper.h */,
+				E4DB25301B8B03A600E25818 /* SystemSoundHelper.m */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -502,6 +523,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4287F931B7CC547003E1072 /* JSQMessagesViewController.h in Headers */,
+				E4DB25311B8B03A600E25818 /* SystemSoundHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,7 +542,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E4DB24BA1B87858500E25818 /* PBXTargetDependency */,
 			);
 			name = JSQMessagesViewController;
 			productName = JSQMessagesViewController;
@@ -568,16 +589,11 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = E4287F831B7CC547003E1072;
 			productRefGroup = E4287F8E1B7CC547003E1072 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = E4DB246B1B873CD900E25818 /* Products */;
-					ProjectRef = E483D8201B84A66B00C490B9 /* JSQSystemSoundPlayer.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				E4287F8C1B7CC547003E1072 /* JSQMessagesViewController */,
@@ -586,36 +602,13 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		E4DB24711B873CD900E25818 /* JSQSystemSoundPlayer.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = JSQSystemSoundPlayer.framework;
-			remoteRef = E4DB24701B873CD900E25818 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E4DB24731B873CD900E25818 /* JSQSystemSoundPlayer.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = JSQSystemSoundPlayer.framework;
-			remoteRef = E4DB24721B873CD900E25818 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E4DB24751B873CD900E25818 /* JSQSystemSoundPlayer Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "JSQSystemSoundPlayer Tests.xctest";
-			remoteRef = E4DB24741B873CD900E25818 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		E4287F8B1B7CC547003E1072 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E483D8A11B8601F400C490B9 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
+				E4DB25041B8B033E00E25818 /* Info.plist in Resources */,
 				E483D7CD1B84981F00C490B9 /* JSQMessagesAssets.bundle in Resources */,
 				E483D8A31B8601F400C490B9 /* JSQMessagesToolbarContentView.xib in Resources */,
 				E483D8A41B8601F400C490B9 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
@@ -656,10 +649,12 @@
 				E483D84B1B84B8D300C490B9 /* JSQMessageMediaData.swift in Sources */,
 				E483D8551B84C34900C490B9 /* JSQMessagesBubbleImageFactory.swift in Sources */,
 				E483D8591B84DCC800C490B9 /* JSQMessageAvatarImageDataSource.swift in Sources */,
+				E4DB25321B8B03A600E25818 /* SystemSoundHelper.m in Sources */,
 				E483D8A61B86020900C490B9 /* JSQMessagesTypingIndicatorFooterView.swift in Sources */,
 				E483D8C21B86206900C490B9 /* JSQMessagesCollectionViewCell.swift in Sources */,
 				E483D8BB1B861A0B00C490B9 /* JSQMessagesInputToolbar.swift in Sources */,
 				E483D8B71B8618AE00C490B9 /* JSQMessagesLabel.swift in Sources */,
+				E4DB25051B8B033E00E25818 /* JSQSystemSoundPlayer.swift in Sources */,
 				E483D8AC1B86102A00C490B9 /* JSQMessagesLoadEarlierHeaderView.swift in Sources */,
 				E483D88C1B85D73500C490B9 /* JSQMessagesCollectionViewDelegateFlowLayout.swift in Sources */,
 				E483D7EC1B84A03A00C490B9 /* JSQMessagesViewController.swift in Sources */,
@@ -670,7 +665,7 @@
 				E483D85B1B84DD0000C490B9 /* JSQMessageBubbleImageDataSource.swift in Sources */,
 				E483D8601B84E3A300C490B9 /* JSQMessage.swift in Sources */,
 				E483D8501B84BF7800C490B9 /* JSQMessagesMediaPlaceholderView.swift in Sources */,
-				E483D7F01B84A0CB00C490B9 /* JSQSystemSoundPlayer.swift in Sources */,
+				E483D7F01B84A0CB00C490B9 /* JSQSystemSoundPlayer+Messages.swift in Sources */,
 				E483D8821B85CF6D00C490B9 /* JSQMessagesAvatarImage.swift in Sources */,
 				E483D8C01B86204900C490B9 /* JSQMessagesCollectionViewCellOutgoing.swift in Sources */,
 				E483D8571B84C52400C490B9 /* JSQMessagesBubbleImage.swift in Sources */,
@@ -728,11 +723,6 @@
 			isa = PBXTargetDependency;
 			target = E4287F8C1B7CC547003E1072 /* JSQMessagesViewController */;
 			targetProxy = E483D7DC1B84994F00C490B9 /* PBXContainerItemProxy */;
-		};
-		E4DB24BA1B87858500E25818 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "JSQSystemSoundPlayer-iOS";
-			targetProxy = E4DB24B91B87858500E25818 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -844,6 +834,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -866,6 +857,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

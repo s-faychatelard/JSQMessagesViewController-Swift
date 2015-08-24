@@ -1,0 +1,3 @@
+[submodule "JSQMessagesViewController/JSQMessagesViewController/3rd party/JSQSystemSoundPlayer-Swift"]
+	path = JSQMessagesViewController/JSQMessagesViewController/3rd party/JSQSystemSoundPlayer-Swift
+	url = https://github.com/s-faychatelard/JSQSystemSoundPlayer-Swift.git
