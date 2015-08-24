@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Dviance. All rights reserved.
 //
 
-import JSQSystemSoundPlayer
-
 let kJSQMessageReceivedSoundName = "message_received"
 let kJSQMessageSentSoundName = "message_sent"
 
