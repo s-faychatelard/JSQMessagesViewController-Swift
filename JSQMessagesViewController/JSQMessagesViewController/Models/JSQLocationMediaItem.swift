@@ -9,11 +9,11 @@
 import Foundation
 import MapKit
 
-public typealias JSQLocationMediaItemCompletionBlock = (() -> Void)
+typealias JSQLocationMediaItemCompletionBlock = (() -> Void)
 
-public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotation, NSCoding, NSCopying {
+class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotation, NSCoding, NSCopying {
 
-    public var location: CLLocation? {
+    var location: CLLocation? {
         
         didSet {
             
@@ -27,12 +27,12 @@ public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotati
     
     // MARK: - Initialization
     
-    public required init() {
+    required init() {
         
         super.init()
     }
     
-    public required init(location: CLLocation?) {
+    required init(location: CLLocation?) {
         
         self.location = location
         self.cachedMapImageView = nil
@@ -40,12 +40,12 @@ public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotati
         super.init()
     }
     
-    public required init(maskAsOutgoing: Bool) {
+    required init(maskAsOutgoing: Bool) {
         
         super.init(maskAsOutgoing: maskAsOutgoing)
     }
     
-    public override var appliesMediaViewMaskAsOutgoing: Bool {
+    override var appliesMediaViewMaskAsOutgoing: Bool {
         
         didSet {
             
@@ -63,7 +63,7 @@ public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotati
     
     // MARK: - Map snapshot
     
-    public func set(location: CLLocation?, completion: JSQLocationMediaItemCompletionBlock?) {
+    func set(location: CLLocation?, completion: JSQLocationMediaItemCompletionBlock?) {
         
         self.set(location, region: location != nil ? MKCoordinateRegionMakeWithDistance(location!.coordinate, 500, 500) : nil, completion: completion)
     }
@@ -124,7 +124,7 @@ public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotati
     
     // MARK: - MKAnnotation
     
-    public var coordinate: CLLocationCoordinate2D {
+    var coordinate: CLLocationCoordinate2D {
         
         get {
             
@@ -134,7 +134,7 @@ public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotati
     
     // MARK: - JSQMessageMediaData protocol
     
-    public override var mediaView: UIView? {
+    override var mediaView: UIView? {
         
         get {
             
@@ -160,7 +160,7 @@ public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotati
         }
     }
     
-    public override var mediaHash: Int {
+    override var mediaHash: Int {
         
         get {
             
@@ -170,7 +170,7 @@ public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotati
     
     // MARK: - NSObject
     
-    public override func isEqual(object: AnyObject?) -> Bool {
+    override func isEqual(object: AnyObject?) -> Bool {
         
         if !super.isEqual(object) {
             
@@ -193,7 +193,7 @@ public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotati
         return false
     }
     
-    public override var hash:Int {
+    override var hash:Int {
         
         get {
             
@@ -201,7 +201,7 @@ public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotati
         }
     }
     
-    public override var description: String {
+    override var description: String {
         
         get {
             
@@ -211,14 +211,14 @@ public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotati
     
     // MARK: - NSCoding
     
-    public required init(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
         
         self.location = aDecoder.decodeObjectForKey("location") as? CLLocation
     }
     
-    public override func encodeWithCoder(aCoder: NSCoder) {
+    override func encodeWithCoder(aCoder: NSCoder) {
         
         super.encodeWithCoder(aCoder)
         
@@ -227,7 +227,7 @@ public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotati
     
     // MARK: - NSCopying
     
-    public override func copyWithZone(zone: NSZone) -> AnyObject {
+    override func copyWithZone(zone: NSZone) -> AnyObject {
         
         let copy = self.dynamicType(location: self.location)
         copy.appliesMediaViewMaskAsOutgoing = self.appliesMediaViewMaskAsOutgoing

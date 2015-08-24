@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc public protocol JSQMessageData {
+@objc protocol JSQMessageData {
     
     var senderID: String { get }
     var senderDisplayName: String { get }

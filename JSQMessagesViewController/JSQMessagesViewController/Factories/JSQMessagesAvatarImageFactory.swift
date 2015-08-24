@@ -8,17 +8,17 @@
 
 import Foundation
 
-public class JSQMessagesAvatarImageFactory {
+class JSQMessagesAvatarImageFactory {
     
     // MARK: - Public
     
-    public class func avatarImage(#placholder: UIImage, diameter: CGFloat) -> JSQMessagesAvatarImage {
+    class func avatarImage(#placholder: UIImage, diameter: CGFloat) -> JSQMessagesAvatarImage {
         
         let circlePlaceholderImage = JSQMessagesAvatarImageFactory.jsq_circularImage(placholder, diameter: diameter, highlightedColor: nil)
         return JSQMessagesAvatarImage.avatar(placeholder: circlePlaceholderImage)
     }
     
-    public class func avatarImage(#image: UIImage, diameter: CGFloat) -> JSQMessagesAvatarImage {
+    class func avatarImage(#image: UIImage, diameter: CGFloat) -> JSQMessagesAvatarImage {
         
         let avatar = JSQMessagesAvatarImageFactory.circularAvatar(image: image, diameter: diameter)
         let highlightedAvatar = JSQMessagesAvatarImageFactory.circularAvatar(highlightedImage: image, diameter: diameter)
@@ -26,17 +26,17 @@ public class JSQMessagesAvatarImageFactory {
         return JSQMessagesAvatarImage(avatarImage: avatar, highlightedImage: highlightedAvatar, placeholderImage: avatar)
     }
     
-    public class func circularAvatar(#image: UIImage, diameter: CGFloat) -> UIImage {
+    class func circularAvatar(#image: UIImage, diameter: CGFloat) -> UIImage {
         
         return JSQMessagesAvatarImageFactory.jsq_circularImage(image, diameter: diameter, highlightedColor: nil)
     }
     
-    public class func circularAvatar(#highlightedImage: UIImage, diameter: CGFloat) -> UIImage {
+    class func circularAvatar(#highlightedImage: UIImage, diameter: CGFloat) -> UIImage {
         
         return JSQMessagesAvatarImageFactory.jsq_circularImage(highlightedImage, diameter: diameter, highlightedColor: UIColor(white: 0.1, alpha: 0.3))
     }
     
-    public class func avatarImage(#userInitials: String, backgroundColor: UIColor, textColor: UIColor, font: UIFont, diameter: CGFloat) -> JSQMessagesAvatarImage {
+    class func avatarImage(#userInitials: String, backgroundColor: UIColor, textColor: UIColor, font: UIFont, diameter: CGFloat) -> JSQMessagesAvatarImage {
         
         let avatar = JSQMessagesAvatarImageFactory.jsq_image(initials: userInitials, backgroundColor: backgroundColor, textColor: textColor, font: font, diameter: diameter)
         let highlightedAvatar = JSQMessagesAvatarImageFactory.jsq_circularImage(avatar, diameter: diameter, highlightedColor: UIColor(white: 0.1, alpha: 0.3))

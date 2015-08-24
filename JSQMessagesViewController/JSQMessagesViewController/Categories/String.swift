@@ -8,14 +8,14 @@
 
 import Foundation
 
-extension String {
+internal extension String {
     
-    public func jsq_className() -> String {
+    func jsq_className() -> String {
         
         return self.componentsSeparatedByString(".").last ?? self
     }
     
-    public func jsq_stringByTrimingWhitespace() -> String {
+    func jsq_stringByTrimingWhitespace() -> String {
         
         return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     }

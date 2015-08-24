@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class JSQMediaItem: NSObject, JSQMessageMediaData, NSCoding, NSCopying {
+class JSQMediaItem: NSObject, JSQMessageMediaData, NSCoding, NSCopying {
 
     var cachedPlaceholderView: UIView?
     
-    public var appliesMediaViewMaskAsOutgoing: Bool = true {
+    var appliesMediaViewMaskAsOutgoing: Bool = true {
         
         didSet {
             
@@ -20,7 +20,7 @@ public class JSQMediaItem: NSObject, JSQMessageMediaData, NSCoding, NSCopying {
         }
     }
     
-    public override required init() {
+    override required init() {
         
         super.init()
         
@@ -29,7 +29,7 @@ public class JSQMediaItem: NSObject, JSQMessageMediaData, NSCoding, NSCopying {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("didReceiveMemoryWarningNotification:"), name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
     }
     
-    public required init(maskAsOutgoing: Bool) {
+    required init(maskAsOutgoing: Bool) {
     
         super.init()
         
@@ -59,7 +59,7 @@ public class JSQMediaItem: NSObject, JSQMessageMediaData, NSCoding, NSCopying {
     
     // MARK: - JSQMessageMediaData protocol
     
-    public var mediaView: UIView? {
+    var mediaView: UIView? {
         
         get {
             print("Error! required method not implemented in subclass. Need to implement \(__FUNCTION__)")
@@ -67,7 +67,7 @@ public class JSQMediaItem: NSObject, JSQMessageMediaData, NSCoding, NSCopying {
         }
     }
     
-    public var mediaViewDisplaySize: CGSize {
+    var mediaViewDisplaySize: CGSize {
         
         get {
             
@@ -79,7 +79,7 @@ public class JSQMediaItem: NSObject, JSQMessageMediaData, NSCoding, NSCopying {
         }
     }
     
-    public var mediaPlaceholderView: UIView {
+    var mediaPlaceholderView: UIView {
         
         get {
     
@@ -99,7 +99,7 @@ public class JSQMediaItem: NSObject, JSQMessageMediaData, NSCoding, NSCopying {
         }
     }
     
-    public var mediaHash: Int {
+    var mediaHash: Int {
     
         get {
         
@@ -109,7 +109,7 @@ public class JSQMediaItem: NSObject, JSQMessageMediaData, NSCoding, NSCopying {
     
     // MARK: - NSObject
     
-    public override func isEqual(object: AnyObject?) -> Bool {
+    override func isEqual(object: AnyObject?) -> Bool {
         
         if !object!.isKindOfClass(self.dynamicType) {
             
@@ -124,7 +124,7 @@ public class JSQMediaItem: NSObject, JSQMessageMediaData, NSCoding, NSCopying {
         return false
     }
     
-    public override var hash:Int {
+    override var hash:Int {
 
         get {
 
@@ -132,7 +132,7 @@ public class JSQMediaItem: NSObject, JSQMessageMediaData, NSCoding, NSCopying {
         }
     }
     
-    public override var description: String {
+    override var description: String {
         
         get {
             
@@ -147,21 +147,21 @@ public class JSQMediaItem: NSObject, JSQMessageMediaData, NSCoding, NSCopying {
     
     // MARK: - NSCoding
     
-    public required init(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         
         super.init()
         
         self.appliesMediaViewMaskAsOutgoing = aDecoder.decodeBoolForKey("appliesMediaViewMaskAsOutgoing")
     }
     
-    public func encodeWithCoder(aCoder: NSCoder) {
+    func encodeWithCoder(aCoder: NSCoder) {
         
         aCoder.encodeBool(self.appliesMediaViewMaskAsOutgoing, forKey: "appliesMediaViewMaskAsOutgoing")
     }
     
     // MARK: - NSCopying
     
-    public func copyWithZone(zone: NSZone) -> AnyObject {
+    func copyWithZone(zone: NSZone) -> AnyObject {
         
         return self.dynamicType(maskAsOutgoing: self.appliesMediaViewMaskAsOutgoing)
     }

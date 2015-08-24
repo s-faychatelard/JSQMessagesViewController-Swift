@@ -10,9 +10,9 @@ import UIKit
 
 let kJSQMessagesToolbarContentViewHorizontalSpacingDefault: CGFloat = 8;
 
-public class JSQMessagesToolbarContentView: UIView {
+class JSQMessagesToolbarContentView: UIView {
     
-    @IBOutlet private(set) public var textView: JSQMessagesComposerTextView!
+    @IBOutlet private(set) var textView: JSQMessagesComposerTextView!
     
     @IBOutlet var leftBarButtonContainerView: UIView!
     @IBOutlet var leftBarButtonContainerViewWidthConstraint: NSLayoutConstraint!
@@ -23,7 +23,7 @@ public class JSQMessagesToolbarContentView: UIView {
     @IBOutlet var leftHorizontalSpacingConstraint: NSLayoutConstraint!
     @IBOutlet var rightHorizontalSpacingConstraint: NSLayoutConstraint!
     
-    public override var backgroundColor: UIColor? {
+    override var backgroundColor: UIColor? {
         
         didSet {
             
@@ -32,7 +32,7 @@ public class JSQMessagesToolbarContentView: UIView {
         }
     }
     
-    public dynamic var leftBarButtonItem: UIButton? {
+    dynamic var leftBarButtonItem: UIButton? {
         
         willSet {
             
@@ -76,7 +76,7 @@ public class JSQMessagesToolbarContentView: UIView {
         }
     }
     
-    public dynamic var rightBarButtonItem: UIButton? {
+    dynamic var rightBarButtonItem: UIButton? {
         
         willSet {
             
@@ -120,14 +120,14 @@ public class JSQMessagesToolbarContentView: UIView {
         }
     }
     
-    public class func nib() -> UINib {
+    class func nib() -> UINib {
         
         return UINib(nibName: "\(JSQMessagesToolbarContentView.self)".jsq_className(), bundle: NSBundle(forClass: JSQMessagesToolbarContentView.self))
     }
     
     // MARK: - Initialization
     
-    public override func awakeFromNib() {
+    override func awakeFromNib() {
         
         super.awakeFromNib()
         
@@ -141,7 +141,7 @@ public class JSQMessagesToolbarContentView: UIView {
     
     // MARK: - UIView overrides
     
-    public override func setNeedsDisplay() {
+    override func setNeedsDisplay() {
     
         super.setNeedsDisplay()
 

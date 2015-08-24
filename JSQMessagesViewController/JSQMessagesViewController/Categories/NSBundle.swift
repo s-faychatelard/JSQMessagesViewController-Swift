@@ -8,14 +8,14 @@
 
 import Foundation
 
-extension NSBundle {
+internal extension NSBundle {
     
-    public class func jsq_messagesBundle() -> NSBundle? {
+    class func jsq_messagesBundle() -> NSBundle? {
         
         return NSBundle(forClass: JSQMessagesViewController.self)
     }
     
-    public class func jsq_messagesAssetBundle() -> NSBundle? {
+    class func jsq_messagesAssetBundle() -> NSBundle? {
         
         if let bundleResourcePath = NSBundle.jsq_messagesBundle()?.resourcePath {
             
@@ -26,7 +26,7 @@ extension NSBundle {
         return nil
     }
     
-    public class func jsq_localizedStringForKey(key: String) -> String {
+    class func jsq_localizedStringForKey(key: String) -> String {
         
         if let bundle = NSBundle.jsq_messagesAssetBundle() {
         

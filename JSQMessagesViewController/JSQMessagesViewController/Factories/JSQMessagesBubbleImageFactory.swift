@@ -8,17 +8,17 @@
 
 import Foundation
 
-public class JSQMessagesBubbleImageFactory {
+class JSQMessagesBubbleImageFactory {
     
     private let bubbleImage: UIImage
     private var capInsets: UIEdgeInsets
     
-    public convenience init() {
+    convenience init() {
         
         self.init(bubbleImage: UIImage.jsq_bubbleCompactImage()!, capInsets: UIEdgeInsetsZero)
     }
     
-    public init(bubbleImage: UIImage, capInsets: UIEdgeInsets) {
+    init(bubbleImage: UIImage, capInsets: UIEdgeInsets) {
     
         self.bubbleImage = bubbleImage
         self.capInsets = capInsets
@@ -35,12 +35,12 @@ public class JSQMessagesBubbleImageFactory {
     
     // MARK: - Public
     
-    public func outgoingMessagesBubbleImage(#color: UIColor) -> JSQMessagesBubbleImage {
+    func outgoingMessagesBubbleImage(#color: UIColor) -> JSQMessagesBubbleImage {
 
         return self.jsq_messagesBubbleImage(color: color, flippedForIncoming: false)
     }
     
-    public func incomingMessagesBubbleImage(#color: UIColor) -> JSQMessagesBubbleImage {
+    func incomingMessagesBubbleImage(#color: UIColor) -> JSQMessagesBubbleImage {
         
         return self.jsq_messagesBubbleImage(color: color, flippedForIncoming: true)
     }

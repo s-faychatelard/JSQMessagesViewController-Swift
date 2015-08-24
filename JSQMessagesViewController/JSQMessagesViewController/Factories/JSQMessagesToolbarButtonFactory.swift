@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class JSQMessagesToolbarButtonFactory {
+class JSQMessagesToolbarButtonFactory {
     
-    public class func defaultAccessoryButtonItem() -> UIButton {
+    class func defaultAccessoryButtonItem() -> UIButton {
     
         let accessoryImage = UIImage.jsq_defaultAccessoryImage()!
         let normalImage = accessoryImage.jsq_imageMaskedWithColor(UIColor.lightGrayColor())
@@ -27,7 +27,7 @@ public class JSQMessagesToolbarButtonFactory {
         return accessoryButton
     }
     
-    public class func defaultSendButtonItem() -> UIButton {
+    class func defaultSendButtonItem() -> UIButton {
     
         let sendTitle = NSBundle.jsq_localizedStringForKey("send")
         

@@ -8,16 +8,16 @@
 
 import UIKit
 
-public class JSQMessagesComposerTextView: UITextView {
+class JSQMessagesComposerTextView: UITextView {
     
-    public var placeHolder: String? {
+    var placeHolder: String? {
         
         didSet {
             
             self.setNeedsDisplay()
         }
     }
-    public var placeHolderTextColor: UIColor = UIColor.lightGrayColor() {
+    var placeHolderTextColor: UIColor = UIColor.lightGrayColor() {
         
         didSet {
             
@@ -62,21 +62,21 @@ public class JSQMessagesComposerTextView: UITextView {
         self.jsq_addTextViewNotificationObservers()
     }
     
-    public override init(frame: CGRect, textContainer: NSTextContainer?) {
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
         
         super.init(frame: frame, textContainer: textContainer)
         
         self.jsq_configureTextView()
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
         
         self.jsq_configureTextView()
     }
     
-    public override func awakeFromNib() {
+    override func awakeFromNib() {
         
         super.awakeFromNib()
         
@@ -91,14 +91,14 @@ public class JSQMessagesComposerTextView: UITextView {
     
     // MARK: - Composer text view
     
-    public override func hasText() -> Bool {
+    override func hasText() -> Bool {
     
         return self.text.jsq_stringByTrimingWhitespace().lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0
     }
     
     // MARK: - UITextView overrides
     
-    public override var text: String! {
+    override var text: String! {
         
         didSet {
             
@@ -106,7 +106,7 @@ public class JSQMessagesComposerTextView: UITextView {
         }
     }
     
-    public override var font: UIFont! {
+    override var font: UIFont! {
         
         didSet {
             
@@ -114,7 +114,7 @@ public class JSQMessagesComposerTextView: UITextView {
         }
     }
     
-    public override var textColor: UIColor! {
+    override var textColor: UIColor! {
         
         didSet {
             
@@ -122,7 +122,7 @@ public class JSQMessagesComposerTextView: UITextView {
         }
     }
     
-    public override var textAlignment: NSTextAlignment {
+    override var textAlignment: NSTextAlignment {
         
         didSet {
     
@@ -132,7 +132,7 @@ public class JSQMessagesComposerTextView: UITextView {
     
     // MARK: - Drawing
     
-    public override func drawRect(rect: CGRect) {
+    override func drawRect(rect: CGRect) {
         
         super.drawRect(rect)
         

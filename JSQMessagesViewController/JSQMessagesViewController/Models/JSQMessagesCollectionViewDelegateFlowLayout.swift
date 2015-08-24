@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc public protocol JSQMessagesCollectionViewDelegateFlowLayout: UICollectionViewDelegateFlowLayout {
+@objc protocol JSQMessagesCollectionViewDelegateFlowLayout: UICollectionViewDelegateFlowLayout {
 
     optional func collectionView(collectionView: JSQMessagesCollectionView, layout: JSQMessagesCollectionViewFlowLayout, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat
     optional func collectionView(collectionView: JSQMessagesCollectionView, layout: JSQMessagesCollectionViewFlowLayout, heightForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat

@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc public protocol JSQMessageMediaData: NSObjectProtocol {
+@objc protocol JSQMessageMediaData: NSObjectProtocol {
     
     var mediaView: UIView? { get }
     var mediaViewDisplaySize: CGSize { get }

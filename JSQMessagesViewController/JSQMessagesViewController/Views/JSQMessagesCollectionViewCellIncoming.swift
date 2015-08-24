@@ -8,9 +8,9 @@
 
 import UIKit
 
-public class JSQMessagesCollectionViewCellIncoming: JSQMessagesCollectionViewCell {
+class JSQMessagesCollectionViewCellIncoming: JSQMessagesCollectionViewCell {
     
-    public override func awakeFromNib() {
+    override func awakeFromNib() {
         
         super.awakeFromNib()
         
@@ -18,17 +18,17 @@ public class JSQMessagesCollectionViewCellIncoming: JSQMessagesCollectionViewCel
         self.cellBottomLabel.textAlignment = .Left
     }
     
-    public override class func nib() -> UINib {
+    override class func nib() -> UINib {
         
         return UINib(nibName: "\(JSQMessagesCollectionViewCellIncoming.self)".jsq_className(), bundle: NSBundle(forClass: JSQMessagesCollectionViewCellIncoming.self))
     }
     
-    public override class func cellReuseIdentifier() -> String {
+    override class func cellReuseIdentifier() -> String {
         
         return "\(JSQMessagesCollectionViewCellIncoming.self)".jsq_className()
     }
     
-    public override class func mediaCellReuseIdentifier() -> String {
+    override class func mediaCellReuseIdentifier() -> String {
         
         return "\(JSQMessagesCollectionViewCellIncoming.self)".jsq_className() + "_JSQMedia"
     }

@@ -8,15 +8,15 @@
 
 import UIKit
 
-public class JSQMessagesCollectionView: UICollectionView, JSQMessagesCollectionViewCellDelegate, JSQMessagesLoadEarlierHeaderViewDelegate {
+class JSQMessagesCollectionView: UICollectionView, JSQMessagesCollectionViewCellDelegate, JSQMessagesLoadEarlierHeaderViewDelegate {
     
-    public var messagesDataSource: JSQMessagesCollectionViewDataSource? {
+    var messagesDataSource: JSQMessagesCollectionViewDataSource? {
         get { return self.dataSource as? JSQMessagesCollectionViewDataSource }
     }
-    public var messagesDelegate: JSQMessagesCollectionViewDelegateFlowLayout? {
+    var messagesDelegate: JSQMessagesCollectionViewDelegateFlowLayout? {
         get { return self.delegate as? JSQMessagesCollectionViewDelegateFlowLayout }
     }
-    public var messagesCollectionViewLayout: JSQMessagesCollectionViewFlowLayout {
+    var messagesCollectionViewLayout: JSQMessagesCollectionViewFlowLayout {
         get { return self.collectionViewLayout as! JSQMessagesCollectionViewFlowLayout }
     }
     
@@ -50,21 +50,21 @@ public class JSQMessagesCollectionView: UICollectionView, JSQMessagesCollectionV
         self.registerNib(JSQMessagesLoadEarlierHeaderView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: JSQMessagesLoadEarlierHeaderView.headerReuseIdentifier())
     }
     
-    public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         
         super.init(frame: frame, collectionViewLayout: layout)
         
         self.jsq_configureCollectionView()
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
         
         self.jsq_configureCollectionView()
     }
     
-    public override func awakeFromNib() {
+    override func awakeFromNib() {
         
         super.awakeFromNib()
         
@@ -96,14 +96,14 @@ public class JSQMessagesCollectionView: UICollectionView, JSQMessagesCollectionV
     
     // MARK: - Load earlier messages header delegate
     
-    public func headerView(headerView: JSQMessagesLoadEarlierHeaderView, didPressLoadButton sender: UIButton?) {
+    func headerView(headerView: JSQMessagesLoadEarlierHeaderView, didPressLoadButton sender: UIButton?) {
         
         self.messagesDelegate?.collectionView?(self, header: headerView, didTapLoadEarlierMessagesButton: sender)
     }
     
     // MARK: - Messages collection cell delegate
 
-    public func messagesCollectionViewCellDidTapAvatar(cell: JSQMessagesCollectionViewCell) {
+    func messagesCollectionViewCellDidTapAvatar(cell: JSQMessagesCollectionViewCell) {
         
         if let indexPath = self.indexPathForCell(cell) {
             
@@ -111,7 +111,7 @@ public class JSQMessagesCollectionView: UICollectionView, JSQMessagesCollectionV
         }
     }
     
-    public func messagesCollectionViewCellDidTapMessageBubble(cell: JSQMessagesCollectionViewCell) {
+    func messagesCollectionViewCellDidTapMessageBubble(cell: JSQMessagesCollectionViewCell) {
         
         if let indexPath = self.indexPathForCell(cell) {
             
@@ -119,7 +119,7 @@ public class JSQMessagesCollectionView: UICollectionView, JSQMessagesCollectionV
         }
     }
     
-    public func messagesCollectionViewCellDidTapCell(cell: JSQMessagesCollectionViewCell, atPosition position: CGPoint) {
+    func messagesCollectionViewCellDidTapCell(cell: JSQMessagesCollectionViewCell, atPosition position: CGPoint) {
         
         if let indexPath = self.indexPathForCell(cell) {
             
@@ -127,7 +127,7 @@ public class JSQMessagesCollectionView: UICollectionView, JSQMessagesCollectionV
         }
     }
     
-    public func messagesCollectionViewCell(cell: JSQMessagesCollectionViewCell, didPerformAction action: Selector, withSender sender: AnyObject) {
+    func messagesCollectionViewCell(cell: JSQMessagesCollectionViewCell, didPerformAction action: Selector, withSender sender: AnyObject) {
         
         if let indexPath = self.indexPathForCell(cell) {
             

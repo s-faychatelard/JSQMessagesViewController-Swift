@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIDevice {
+internal extension UIDevice {
     
     class func jsq_isCurrentDeviceBeforeiOS8() -> Bool {
         

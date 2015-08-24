@@ -8,13 +8,13 @@
 
 import Foundation
 
-public class JSQMessagesAvatarImage: NSObject, JSQMessageAvatarImageDataSource, NSCopying {
+class JSQMessagesAvatarImage: NSObject, JSQMessageAvatarImageDataSource, NSCopying {
     
-    public var avatarImage: UIImage?
-    public var avatarHighlightedImage: UIImage?
-    private(set) public var avatarPlaceholderImage: UIImage
+    var avatarImage: UIImage?
+    var avatarHighlightedImage: UIImage?
+    private(set) var avatarPlaceholderImage: UIImage
     
-    public required init(avatarImage: UIImage?, highlightedImage: UIImage?, placeholderImage: UIImage) {
+    required init(avatarImage: UIImage?, highlightedImage: UIImage?, placeholderImage: UIImage) {
         
         self.avatarImage = avatarImage
         self.avatarHighlightedImage = highlightedImage
@@ -23,19 +23,19 @@ public class JSQMessagesAvatarImage: NSObject, JSQMessageAvatarImageDataSource, 
         super.init()
     }
     
-    public class func avatar(#image: UIImage) -> JSQMessagesAvatarImage {
+    class func avatar(#image: UIImage) -> JSQMessagesAvatarImage {
         
         return JSQMessagesAvatarImage(avatarImage: image, highlightedImage: image, placeholderImage: image)
     }
     
-    public class func avatar(#placeholder: UIImage) -> JSQMessagesAvatarImage {
+    class func avatar(#placeholder: UIImage) -> JSQMessagesAvatarImage {
         
         return JSQMessagesAvatarImage(avatarImage: nil, highlightedImage: nil, placeholderImage: placeholder)
     }
     
     // MARK: - NSObject
     
-    public override var description: String {
+    override var description: String {
         
         get {
             
@@ -50,7 +50,7 @@ public class JSQMessagesAvatarImage: NSObject, JSQMessageAvatarImageDataSource, 
     
     // MARK: - NSCopying
     
-    public func copyWithZone(zone: NSZone) -> AnyObject {
+    func copyWithZone(zone: NSZone) -> AnyObject {
      
         return self.dynamicType(avatarImage: UIImage(CGImage: self.avatarImage?.CGImage), highlightedImage: UIImage(CGImage: self.avatarHighlightedImage?.CGImage), placeholderImage: UIImage(CGImage: self.avatarPlaceholderImage.CGImage)!)
     }

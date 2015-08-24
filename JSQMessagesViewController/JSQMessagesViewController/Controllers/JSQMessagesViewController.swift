@@ -8,29 +8,29 @@
 
 import UIKit
 
-public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionViewDataSource, JSQMessagesCollectionViewDelegateFlowLayout, UITextViewDelegate, JSQMessagesInputToolbarDelegate, JSQMessagesKeyboardControllerDelegate {
+class JSQMessagesViewController: UIViewController, JSQMessagesCollectionViewDataSource, JSQMessagesCollectionViewDelegateFlowLayout, UITextViewDelegate, JSQMessagesInputToolbarDelegate, JSQMessagesKeyboardControllerDelegate {
     
-    @IBOutlet private(set) public var collectionView: JSQMessagesCollectionView!
-    @IBOutlet private(set) public var inputToolbar: JSQMessagesInputToolbar!
+    @IBOutlet private(set) var collectionView: JSQMessagesCollectionView!
+    @IBOutlet private(set) var inputToolbar: JSQMessagesInputToolbar!
     
     @IBOutlet var toolbarHeightConstraint: NSLayoutConstraint!
     @IBOutlet var toolbarBottomLayoutGuide: NSLayoutConstraint!
     
-    public var keyboardController: JSQMessagesKeyboardController!
+    var keyboardController: JSQMessagesKeyboardController!
     
-    public var senderID: String = ""
-    public var senderDisplayName: String = ""
+    var senderID: String = ""
+    var senderDisplayName: String = ""
     
-    public var automaticallyScrollsToMostRecentMessage: Bool = true
+    var automaticallyScrollsToMostRecentMessage: Bool = true
     
-    public var outgoingCellIdentifier: String = JSQMessagesCollectionViewCellOutgoing.cellReuseIdentifier()
-    public var outgoingMediaCellIdentifier: String = JSQMessagesCollectionViewCellOutgoing.mediaCellReuseIdentifier()
+    var outgoingCellIdentifier: String = JSQMessagesCollectionViewCellOutgoing.cellReuseIdentifier()
+    var outgoingMediaCellIdentifier: String = JSQMessagesCollectionViewCellOutgoing.mediaCellReuseIdentifier()
 
     
-    public var incomingCellIdentifier: String = JSQMessagesCollectionViewCellIncoming.cellReuseIdentifier()
-    public var incomingMediaCellIdentifier: String = JSQMessagesCollectionViewCellIncoming.mediaCellReuseIdentifier()
+    var incomingCellIdentifier: String = JSQMessagesCollectionViewCellIncoming.cellReuseIdentifier()
+    var incomingMediaCellIdentifier: String = JSQMessagesCollectionViewCellIncoming.mediaCellReuseIdentifier()
     
-    public var showTypingIndicator: Bool = false {
+    var showTypingIndicator: Bool = false {
         
         didSet {
             
@@ -38,7 +38,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
             self.collectionView.collectionViewLayout.invalidateLayout()
         }
     }
-    public var showLoadEarlierMessagesHeader: Bool = false {
+    var showLoadEarlierMessagesHeader: Bool = false {
         
         didSet {
             
@@ -48,7 +48,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         }
     }
     
-    public var topContentAdditionalInset: CGFloat = 0 {
+    var topContentAdditionalInset: CGFloat = 0 {
         
         didSet {
             
@@ -98,29 +98,29 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
     
     // MARK: - Class methods 
     
-    public class func nib() -> UINib {
+    class func nib() -> UINib {
         
         return UINib(nibName: "\(JSQMessagesViewController.self)".jsq_className(), bundle: NSBundle(forClass: JSQMessagesViewController.self))
     }
     
-    public static func messagesViewController() -> JSQMessagesViewController {
+    static func messagesViewController() -> JSQMessagesViewController {
 
         return self(nibName: "\(JSQMessagesViewController.self)".jsq_className(), bundle: NSBundle(forClass: JSQMessagesViewController.self))
     }
     
     // MARK: - View lifecycle
     
-    public required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
     }
     
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         
         super.viewDidLoad()
         
@@ -130,7 +130,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         self.jsq_registerForNotifications(true)
     }
     
-    public override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
         
@@ -160,7 +160,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         self.jsq_updateKeyboardTriggerPoint()
     }
     
-    public override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         
         super.viewDidAppear(animated)
         
@@ -174,7 +174,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         }
     }
     
-    public override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(animated: Bool) {
         
         super.viewWillDisappear(animated)
         
@@ -182,14 +182,14 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         self.collectionView.messagesCollectionViewLayout.springinessEnabled = false
     }
     
-    public override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(animated: Bool) {
         
         super.viewDidDisappear(animated)
         
         self.keyboardController.endListeningForKeyboard()
     }
     
-    public override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() {
         
         super.didReceiveMemoryWarning()
         
@@ -198,12 +198,12 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
     
     // MARK: - View rotation
     
-    public override func shouldAutorotate() -> Bool {
+    override func shouldAutorotate() -> Bool {
         
         return true
     }
     
-    public override func supportedInterfaceOrientations() -> Int {
+    override func supportedInterfaceOrientations() -> Int {
         
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
 
@@ -212,14 +212,14 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         return Int(UIInterfaceOrientationMask.All.rawValue)
     }
     
-    public override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
         
         super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
         
         self.collectionView.collectionViewLayout.invalidateLayoutWithContext(JSQMessagesCollectionViewFlowLayoutInvalidationContext.context())
     }
     
-    public override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         
         super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
         
@@ -234,24 +234,24 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
     
     // MARK: - Messages view controller
     
-    public func didPressSendButton(button: UIButton, withMessageText text: String, senderId: String, senderDisplayName: String, date: NSDate) {
+    func didPressSendButton(button: UIButton, withMessageText text: String, senderId: String, senderDisplayName: String, date: NSDate) {
         
         println("ERROR: required method not implemented in subclass. Need to implement \(__FUNCTION__)")
         abort()
     }
 
-    public func didPressAccessoryButton(sender: UIButton) {
+    func didPressAccessoryButton(sender: UIButton) {
         
         println("ERROR: required method not implemented in subclass. Need to implement \(__FUNCTION__)")
         abort()
     }
     
-    public func finishSendingMessage() {
+    func finishSendingMessage() {
         
         self.finishSendingMessage(animated: true)
     }
     
-    public func finishSendingMessage(#animated: Bool) {
+    func finishSendingMessage(#animated: Bool) {
         
         let textView = self.inputToolbar.contentView.textView
         textView.text = nil
@@ -270,12 +270,12 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         }
     }
     
-    public func finishReceivingMessage() {
+    func finishReceivingMessage() {
         
         self.finishReceivingMessage(animated: true)
     }
     
-    public func finishReceivingMessage(#animated: Bool) {
+    func finishReceivingMessage(#animated: Bool) {
         
         self.showTypingIndicator = false
         
@@ -288,7 +288,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         }
     }
     
-    public func scrollToBottom(#animated: Bool) {
+    func scrollToBottom(#animated: Bool) {
         
         if self.collectionView.numberOfSections() == 0 {
             
@@ -321,52 +321,52 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
     
     // MARK: - JSQMessages collection view data source
     
-    public func collectionView(collectionView: JSQMessagesCollectionView, messageDataForItemAtIndexPath indexPath: NSIndexPath) -> JSQMessageData {
+    func collectionView(collectionView: JSQMessagesCollectionView, messageDataForItemAtIndexPath indexPath: NSIndexPath) -> JSQMessageData {
         
         println("ERROR: required method not implemented: \(__FUNCTION__)")
         abort()
     }
     
-    public func collectionView(collectionView: JSQMessagesCollectionView, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath) -> JSQMessageBubbleImageDataSource {
+    func collectionView(collectionView: JSQMessagesCollectionView, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath) -> JSQMessageBubbleImageDataSource {
         
         println("ERROR: required method not implemented: \(__FUNCTION__)")
         abort()
     }
     
-    public func collectionView(collectionView: JSQMessagesCollectionView, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath) -> JSQMessageAvatarImageDataSource? {
+    func collectionView(collectionView: JSQMessagesCollectionView, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath) -> JSQMessageAvatarImageDataSource? {
         
         println("ERROR: required method not implemented: \(__FUNCTION__)")
         abort()
     }
     
-    public func collectionView(collectionView: JSQMessagesCollectionView, attributedTextForCellTopLabelAtIndexPath indexPath: NSIndexPath) -> NSAttributedString? {
+    func collectionView(collectionView: JSQMessagesCollectionView, attributedTextForCellTopLabelAtIndexPath indexPath: NSIndexPath) -> NSAttributedString? {
         
         return nil
     }
     
-    public func collectionView(collectionView: JSQMessagesCollectionView, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath) -> NSAttributedString? {
+    func collectionView(collectionView: JSQMessagesCollectionView, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath) -> NSAttributedString? {
         
         return nil
     }
     
-    public func collectionView(collectionView: JSQMessagesCollectionView, attributedTextForCellBottomLabelAtIndexPath indexPath: NSIndexPath) -> NSAttributedString? {
+    func collectionView(collectionView: JSQMessagesCollectionView, attributedTextForCellBottomLabelAtIndexPath indexPath: NSIndexPath) -> NSAttributedString? {
         
         return nil
     }
     
     // MARK: - Collection view data source
     
-    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return 0
     }
     
-    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         
         return 1
     }
     
-    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let dataSource = collectionView.dataSource as! JSQMessagesCollectionViewDataSource
         let flowLayout = collectionView.collectionViewLayout as! JSQMessagesCollectionViewFlowLayout
@@ -461,7 +461,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         return cell
     }
     
-    public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
         if self.showTypingIndicator && kind == UICollectionElementKindSectionFooter {
             
@@ -472,7 +472,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         return self.collectionView.dequeueLoadEarlierMessagesViewHeader(indexPath)
     }
     
-    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         
         if !self.showTypingIndicator {
             
@@ -482,7 +482,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         return CGSizeMake((collectionViewLayout as? JSQMessagesCollectionViewFlowLayout)?.itemWidth ?? 0, JSQMessagesTypingIndicatorFooterView.kJSQMessagesTypingIndicatorFooterViewHeight)
     }
     
-    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         if !self.showLoadEarlierMessagesHeader {
             
@@ -494,7 +494,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
     
     // MARK: - Collection view delegate
     
-    public func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         
         if let messageItem = (collectionView.dataSource as? JSQMessagesCollectionViewDataSource)?.collectionView(self.collectionView, messageDataForItemAtIndexPath: indexPath) {
             
@@ -514,7 +514,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         return true
     }
     
-    public func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) -> Bool {
+    func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) -> Bool {
         
         if action == Selector("copy:") {
             
@@ -524,7 +524,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         return false
     }
     
-    public func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) {
+    func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) {
         
         if action == Selector("copy:") {
 
@@ -537,35 +537,35 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
     
     // MARK: - Collection view delegate flow layout
     
-    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         return (collectionViewLayout as! JSQMessagesCollectionViewFlowLayout).sizeForItem(indexPath)
     }
     
-    public func collectionView(collectionView: JSQMessagesCollectionView, layout: JSQMessagesCollectionViewFlowLayout, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func collectionView(collectionView: JSQMessagesCollectionView, layout: JSQMessagesCollectionViewFlowLayout, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         return 0
     }
     
-    public func collectionView(collectionView: JSQMessagesCollectionView, layout: JSQMessagesCollectionViewFlowLayout, heightForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func collectionView(collectionView: JSQMessagesCollectionView, layout: JSQMessagesCollectionViewFlowLayout, heightForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         return 0
     }
     
-    public func collectionView(collectionView: JSQMessagesCollectionView, layout: JSQMessagesCollectionViewFlowLayout, heightForCellBottomLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func collectionView(collectionView: JSQMessagesCollectionView, layout: JSQMessagesCollectionViewFlowLayout, heightForCellBottomLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         return 0
     }
     
-    public func collectionView(collectionView: JSQMessagesCollectionView, didTapAvatarImageView imageView: UIImageView, atIndexPath indexPath: NSIndexPath) { }
+    func collectionView(collectionView: JSQMessagesCollectionView, didTapAvatarImageView imageView: UIImageView, atIndexPath indexPath: NSIndexPath) { }
     
-    public func collectionView(collectionView: JSQMessagesCollectionView, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath) { }
+    func collectionView(collectionView: JSQMessagesCollectionView, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath) { }
 
-    public func collectionView(collectionView: JSQMessagesCollectionView, didTapCellAtIndexPath indexPath: NSIndexPath, touchLocation: CGPoint) { }
+    func collectionView(collectionView: JSQMessagesCollectionView, didTapCellAtIndexPath indexPath: NSIndexPath, touchLocation: CGPoint) { }
 
     // MARK: - Input toolbar delegate
     
-    public func messagesInputToolbar(toolbar: JSQMessagesInputToolbar, didPressLeftBarButton sender: UIButton) {
+    func messagesInputToolbar(toolbar: JSQMessagesInputToolbar, didPressLeftBarButton sender: UIButton) {
         
         if toolbar.sendButtonOnRight {
             
@@ -577,7 +577,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         }
     }
     
-    public func messagesInputToolbar(toolbar: JSQMessagesInputToolbar, didPressRightBarButton sender: UIButton) {
+    func messagesInputToolbar(toolbar: JSQMessagesInputToolbar, didPressRightBarButton sender: UIButton) {
         
         if toolbar.sendButtonOnRight {
             
@@ -599,7 +599,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
     
     // MARK: - Text view delegate
     
-    public func textViewDidBeginEditing(textView: UITextView) {
+    func textViewDidBeginEditing(textView: UITextView) {
         
         if textView != self.inputToolbar.contentView.textView {
             
@@ -614,7 +614,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         }
     }
     
-    public func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(textView: UITextView) {
         
         if textView != self.inputToolbar.contentView.textView {
             
@@ -624,7 +624,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         self.inputToolbar.toggleSendButtonEnabled()
     }
     
-    public func textViewDidEndEditing(textView: UITextView) {
+    func textViewDidEndEditing(textView: UITextView) {
         
         if textView != self.inputToolbar.contentView.textView {
             
@@ -679,7 +679,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
     
     // MARK: - Key-value observing
     
-    public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         
         if context == self.kJSQMessagesKeyValueObservingContext {
             
@@ -706,7 +706,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
     
     // MARK: - Keyboard controller delegate
     
-    public func keyboardController(keyboardController: JSQMessagesKeyboardController, keyboardDidChangeFrame keyboardFrame: CGRect) {
+    func keyboardController(keyboardController: JSQMessagesKeyboardController, keyboardDidChangeFrame keyboardFrame: CGRect) {
         
         if !self.inputToolbar.contentView.textView.isFirstResponder() && self.toolbarBottomLayoutGuide.constant == 0 {
             

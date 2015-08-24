@@ -8,35 +8,35 @@
 
 import Foundation
 
-public class JSQMessagesMediaViewBubbleImageMasker {
+class JSQMessagesMediaViewBubbleImageMasker {
     
     private(set) var bubbleImageFactory: JSQMessagesBubbleImageFactory
     
-    public convenience init() {
+    convenience init() {
         
         self.init(bubbleImageFactory: JSQMessagesBubbleImageFactory())
     }
     
-    public init(bubbleImageFactory: JSQMessagesBubbleImageFactory) {
+    init(bubbleImageFactory: JSQMessagesBubbleImageFactory) {
         
         self.bubbleImageFactory = bubbleImageFactory
     }
     
     // MARK: - View masking
     
-    public func applyOutgoingBubbleImageMask(#mediaView: UIView) {
+    func applyOutgoingBubbleImageMask(#mediaView: UIView) {
         
         let bubbleImageData = self.bubbleImageFactory.outgoingMessagesBubbleImage(color: UIColor.whiteColor())
         self.jsq_maskView(mediaView, image: bubbleImageData.messageBubbleImage)
     }
     
-    public func applyIncomingBubbleImageMask(#mediaView: UIView) {
+    func applyIncomingBubbleImageMask(#mediaView: UIView) {
         
         let bubbleImageData = self.bubbleImageFactory.incomingMessagesBubbleImage(color: UIColor.whiteColor())
         self.jsq_maskView(mediaView, image: bubbleImageData.messageBubbleImage)
     }
     
-    public class func applyBubbleImageMaskToMediaView(mediaView: UIView, isOutgoing: Bool) {
+    class func applyBubbleImageMaskToMediaView(mediaView: UIView, isOutgoing: Bool) {
         
         let masker = JSQMessagesMediaViewBubbleImageMasker()
         

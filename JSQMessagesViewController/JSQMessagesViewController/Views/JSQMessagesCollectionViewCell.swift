@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol JSQMessagesCollectionViewCellDelegate {
+protocol JSQMessagesCollectionViewCellDelegate {
     
     func messagesCollectionViewCellDidTapAvatar(cell: JSQMessagesCollectionViewCell)
     func messagesCollectionViewCellDidTapMessageBubble(cell: JSQMessagesCollectionViewCell)
@@ -17,22 +17,22 @@ public protocol JSQMessagesCollectionViewCellDelegate {
     func messagesCollectionViewCell(cell: JSQMessagesCollectionViewCell, didPerformAction action: Selector, withSender sender: AnyObject)
 }
 
-public class JSQMessagesCollectionViewCell: UICollectionViewCell {
+class JSQMessagesCollectionViewCell: UICollectionViewCell {
     
     private static var jsqMessagesCollectionViewCellActions: Set<Selector> = Set()
     
-    public var delegate: JSQMessagesCollectionViewCellDelegate?
+    var delegate: JSQMessagesCollectionViewCellDelegate?
     
-    @IBOutlet private(set) public var cellTopLabel: JSQMessagesLabel!
-    @IBOutlet private(set) public var messageBubbleTopLabel: JSQMessagesLabel!
-    @IBOutlet private(set) public var cellBottomLabel: JSQMessagesLabel!
+    @IBOutlet private(set) var cellTopLabel: JSQMessagesLabel!
+    @IBOutlet private(set) var messageBubbleTopLabel: JSQMessagesLabel!
+    @IBOutlet private(set) var cellBottomLabel: JSQMessagesLabel!
     
-    @IBOutlet private(set) public var messageBubbleContainerView: UIView!
-    @IBOutlet private(set) public var messageBubbleImageView: UIImageView?
-    @IBOutlet private(set) public var textView: JSQMessagesCellTextView?
+    @IBOutlet private(set) var messageBubbleContainerView: UIView!
+    @IBOutlet private(set) var messageBubbleImageView: UIImageView?
+    @IBOutlet private(set) var textView: JSQMessagesCellTextView?
     
-    @IBOutlet private(set) public var avatarImageView: UIImageView!
-    @IBOutlet private(set) public var avatarContainerView: UIView!
+    @IBOutlet private(set) var avatarImageView: UIImageView!
+    @IBOutlet private(set) var avatarContainerView: UIView!
     
     @IBOutlet private var messageBubbleContainerWidthConstraint: NSLayoutConstraint!
     
@@ -94,7 +94,7 @@ public class JSQMessagesCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public var mediaView: UIView? {
+    var mediaView: UIView? {
         
         didSet {
             
@@ -123,7 +123,7 @@ public class JSQMessagesCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public override var backgroundColor: UIColor? {
+    override var backgroundColor: UIColor? {
         
         didSet {
             
@@ -141,29 +141,29 @@ public class JSQMessagesCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Class methods
     
-    public class func nib() -> UINib {
+    class func nib() -> UINib {
         
         return UINib(nibName: "\(JSQMessagesCollectionViewCell.self)".jsq_className(), bundle: NSBundle(forClass: JSQMessagesCollectionViewCell.self))
     }
     
-    public class func cellReuseIdentifier() -> String {
+    class func cellReuseIdentifier() -> String {
         
         return "\(JSQMessagesCollectionViewCell.self)".jsq_className()
     }
     
-    public class func mediaCellReuseIdentifier() -> String {
+    class func mediaCellReuseIdentifier() -> String {
         
         return "\(JSQMessagesCollectionViewCell.self)".jsq_className() + "_JSQMedia"
     }
     
-    public class func registerMenuAction(action: Selector) {
+    class func registerMenuAction(action: Selector) {
         
         JSQMessagesCollectionViewCell.jsqMessagesCollectionViewCellActions.insert(action)
     }
     
     // MARK: - Initialization
     
-    public override func awakeFromNib() {
+    override func awakeFromNib() {
         
         super.awakeFromNib()
         
@@ -198,7 +198,7 @@ public class JSQMessagesCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Collection view cell
     
-    public override func prepareForReuse() {
+    override func prepareForReuse() {
         
         super.prepareForReuse()
         
@@ -214,12 +214,12 @@ public class JSQMessagesCollectionViewCell: UICollectionViewCell {
         self.avatarImageView.highlightedImage = nil
     }
     
-    public override func preferredLayoutAttributesFittingAttributes(layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes! {
+    override func preferredLayoutAttributesFittingAttributes(layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes! {
         
         return layoutAttributes
     }
     
-    public override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes!) {
+    override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes!) {
         
         super.applyLayoutAttributes(layoutAttributes)
         
@@ -256,7 +256,7 @@ public class JSQMessagesCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public override var highlighted: Bool {
+    override var highlighted: Bool {
         
         didSet {
             
@@ -264,7 +264,7 @@ public class JSQMessagesCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public override var selected: Bool {
+    override var selected: Bool {
         
         didSet {
             
@@ -272,7 +272,7 @@ public class JSQMessagesCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public override var bounds: CGRect {
+    override var bounds: CGRect {
         
         didSet {
             
@@ -285,7 +285,7 @@ public class JSQMessagesCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Menu actions
     
-    public override func respondsToSelector(aSelector: Selector) -> Bool {
+    override func respondsToSelector(aSelector: Selector) -> Bool {
         
         if JSQMessagesCollectionViewCell.jsqMessagesCollectionViewCellActions.contains(aSelector) {
             

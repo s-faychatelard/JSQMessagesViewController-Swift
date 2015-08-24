@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc public protocol JSQMessageAvatarImageDataSource {
+@objc protocol JSQMessageAvatarImageDataSource {
     
     var avatarImage: UIImage? { get }
     var avatarHighlightedImage: UIImage? { get }

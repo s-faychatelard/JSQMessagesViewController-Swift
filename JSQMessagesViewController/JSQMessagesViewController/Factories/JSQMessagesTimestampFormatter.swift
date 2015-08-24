@@ -8,14 +8,14 @@
 
 import Foundation
 
-public class JSQMessagesTimestampFormatter: NSObject {
+class JSQMessagesTimestampFormatter: NSObject {
 
-    private(set) public var dateFormatter: NSDateFormatter = NSDateFormatter()
+    private(set) var dateFormatter: NSDateFormatter = NSDateFormatter()
     
-    private(set) public var dateTextAttributes: [NSObject: AnyObject]
-    private(set) public var timeTextAttributes: [NSObject: AnyObject]
+    private(set) var dateTextAttributes: [NSObject: AnyObject]
+    private(set) var timeTextAttributes: [NSObject: AnyObject]
     
-    public static let sharedFormatter: JSQMessagesTimestampFormatter = JSQMessagesTimestampFormatter()
+    static let sharedFormatter: JSQMessagesTimestampFormatter = JSQMessagesTimestampFormatter()
     
     override init() {
         
@@ -42,7 +42,7 @@ public class JSQMessagesTimestampFormatter: NSObject {
     
     // MARK: - Formatter
     
-    public func timestamp(date: NSDate) -> String {
+    func timestamp(date: NSDate) -> String {
         
         self.dateFormatter.dateStyle = .MediumStyle
         self.dateFormatter.timeStyle = .ShortStyle
@@ -50,7 +50,7 @@ public class JSQMessagesTimestampFormatter: NSObject {
         return self.dateFormatter.stringFromDate(date)
     }
     
-    public func attributedTimestamp(date: NSDate) -> NSAttributedString {
+    func attributedTimestamp(date: NSDate) -> NSAttributedString {
     
         let relativeDate = self.relativeDate(date)
         let time = self.time(date)
@@ -62,7 +62,7 @@ public class JSQMessagesTimestampFormatter: NSObject {
         return NSAttributedString(attributedString: timestamp)
     }
     
-    public func time(date: NSDate) -> String {
+    func time(date: NSDate) -> String {
         
         self.dateFormatter.dateStyle = .NoStyle
         self.dateFormatter.timeStyle = .ShortStyle
@@ -70,7 +70,7 @@ public class JSQMessagesTimestampFormatter: NSObject {
         return self.dateFormatter.stringFromDate(date)
     }
     
-    public func relativeDate(date: NSDate) -> String {
+    func relativeDate(date: NSDate) -> String {
         
         self.dateFormatter.dateStyle = .MediumStyle
         self.dateFormatter.timeStyle = .NoStyle

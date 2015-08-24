@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc public protocol JSQMessageBubbleImageDataSource {
+@objc protocol JSQMessageBubbleImageDataSource {
     
     var messageBubbleImage: UIImage { get }
     var messageBubbleHighlightedImage: UIImage { get }

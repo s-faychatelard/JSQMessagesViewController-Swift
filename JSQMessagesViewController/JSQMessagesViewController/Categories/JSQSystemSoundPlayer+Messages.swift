@@ -11,22 +11,22 @@ let kJSQMessageSentSoundName = "message_sent"
 
 extension JSQSystemSoundPlayer {
     
-    public class func jsq_playMessageReceivedSound() {
+    class func jsq_playMessageReceivedSound() {
         
         JSQSystemSoundPlayer.jsq_playSoundFromJSQMessagesBundle(name: kJSQMessageReceivedSoundName, asAlert: false)
     }
     
-    public class func jsq_playMessageReceivedAlert() {
+    class func jsq_playMessageReceivedAlert() {
         
         JSQSystemSoundPlayer.jsq_playSoundFromJSQMessagesBundle(name: kJSQMessageReceivedSoundName, asAlert: true)
     }
     
-    public class func jsq_playMessageSentSound() {
+    class func jsq_playMessageSentSound() {
         
         JSQSystemSoundPlayer.jsq_playSoundFromJSQMessagesBundle(name: kJSQMessageSentSoundName, asAlert: false)
     }
     
-    public class func jsq_playMessageSentAlert() {
+    class func jsq_playMessageSentAlert() {
         
         JSQSystemSoundPlayer.jsq_playSoundFromJSQMessagesBundle(name: kJSQMessageSentSoundName, asAlert: true)
     }

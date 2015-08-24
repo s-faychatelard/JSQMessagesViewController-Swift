@@ -8,30 +8,30 @@
 
 import Foundation
 
-public let JSQMessagesKeyboardControllerNotificationKeyboardDidChangeFrame = "JSQMessagesKeyboardControllerNotificationKeyboardDidChangeFrame"
-public let JSQMessagesKeyboardControllerUserInfoKeyKeyboardDidChangeFrame = "JSQMessagesKeyboardControllerUserInfoKeyKeyboardDidChangeFrame"
+let JSQMessagesKeyboardControllerNotificationKeyboardDidChangeFrame = "JSQMessagesKeyboardControllerNotificationKeyboardDidChangeFrame"
+let JSQMessagesKeyboardControllerUserInfoKeyKeyboardDidChangeFrame = "JSQMessagesKeyboardControllerUserInfoKeyKeyboardDidChangeFrame"
 
-public protocol JSQMessagesKeyboardControllerDelegate {
+protocol JSQMessagesKeyboardControllerDelegate {
     
     func keyboardController(keyboardController: JSQMessagesKeyboardController, keyboardDidChangeFrame keyboardFrame: CGRect)
 }
 
-public class JSQMessagesKeyboardController: NSObject, UIGestureRecognizerDelegate {
+class JSQMessagesKeyboardController: NSObject, UIGestureRecognizerDelegate {
     
-    public var delegate: JSQMessagesKeyboardControllerDelegate?
-    private(set) public var textView: UITextView
-    private(set) public var contextView: UIView
-    private(set) public var panGestureRecognizer: UIPanGestureRecognizer
+    var delegate: JSQMessagesKeyboardControllerDelegate?
+    private(set) var textView: UITextView
+    private(set) var contextView: UIView
+    private(set) var panGestureRecognizer: UIPanGestureRecognizer
     
-    public var keyboardTriggerPoint: CGPoint = CGPointZero
-    public var keyboardIsVisible: Bool {
+    var keyboardTriggerPoint: CGPoint = CGPointZero
+    var keyboardIsVisible: Bool {
         
         get {
             
             return self.keyboardView != nil
         }
     }
-    public var currentKeyboardFrame: CGRect {
+    var currentKeyboardFrame: CGRect {
         
         get {
             
@@ -71,7 +71,7 @@ public class JSQMessagesKeyboardController: NSObject, UIGestureRecognizerDelegat
     
     // MARK: - Initialization
     
-    public init(textView: UITextView, contextView: UIView, panGestureRecognizer: UIPanGestureRecognizer, delegate: JSQMessagesKeyboardControllerDelegate?) {
+    init(textView: UITextView, contextView: UIView, panGestureRecognizer: UIPanGestureRecognizer, delegate: JSQMessagesKeyboardControllerDelegate?) {
         
         self.textView = textView
         self.contextView = contextView
@@ -81,7 +81,7 @@ public class JSQMessagesKeyboardController: NSObject, UIGestureRecognizerDelegat
     
     // MARK: - Keyboard controller
     
-    public func beginListeningForKeyboard() {
+    func beginListeningForKeyboard() {
         
         if self.textView.inputAccessoryView == nil {
             
@@ -91,7 +91,7 @@ public class JSQMessagesKeyboardController: NSObject, UIGestureRecognizerDelegat
         self.jsq_registerForNotifications()
     }
     
-    public func endListeningForKeyboard() {
+    func endListeningForKeyboard() {
         
         self.jsq_unregisterForNotifications()
         
@@ -200,7 +200,7 @@ public class JSQMessagesKeyboardController: NSObject, UIGestureRecognizerDelegat
     
     // MARK: - Key-value observing
     
-    public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         
         if context == self.kJSQMessagesKeyboardControllerKeyValueObservingContext {
             

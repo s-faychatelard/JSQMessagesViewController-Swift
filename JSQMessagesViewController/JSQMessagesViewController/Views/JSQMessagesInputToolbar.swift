@@ -10,28 +10,28 @@ import UIKit
 
 let kJSQMessagesInputToolbarKeyValueObservingContext = UnsafeMutablePointer<Void>()
 
-public protocol JSQMessagesInputToolbarDelegate: UIToolbarDelegate {
+protocol JSQMessagesInputToolbarDelegate: UIToolbarDelegate {
     
     func messagesInputToolbar(toolbar: JSQMessagesInputToolbar, didPressRightBarButton sender: UIButton)
     func messagesInputToolbar(toolbar: JSQMessagesInputToolbar, didPressLeftBarButton sender: UIButton)
 }
 
-public class JSQMessagesInputToolbar: UIToolbar {
+class JSQMessagesInputToolbar: UIToolbar {
     
     var toolbarDelegate: JSQMessagesInputToolbarDelegate? {
         get { return self.delegate as? JSQMessagesInputToolbarDelegate }
         set { self.delegate = newValue }
     }
     
-    private(set) public var contentView: JSQMessagesToolbarContentView!
+    private(set) var contentView: JSQMessagesToolbarContentView!
     
-    public var sendButtonOnRight: Bool = true
-    public var preferredDefaultHeight: CGFloat = 44
-    public var maximumHeight: Int = NSNotFound
+    var sendButtonOnRight: Bool = true
+    var preferredDefaultHeight: CGFloat = 44
+    var maximumHeight: Int = NSNotFound
     
     private var jsq_isObserving: Bool = false
     
-    public override func awakeFromNib() {
+    override func awakeFromNib() {
         
         super.awakeFromNib()
         
@@ -93,7 +93,7 @@ public class JSQMessagesInputToolbar: UIToolbar {
     
     // MARK: - Key-value observing
     
-    public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         
         if context == kJSQMessagesInputToolbarKeyValueObservingContext {
             

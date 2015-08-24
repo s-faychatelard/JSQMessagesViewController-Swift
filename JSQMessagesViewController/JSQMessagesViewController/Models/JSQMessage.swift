@@ -8,14 +8,14 @@
 
 import Foundation
 
-public class JSQMessage: NSObject, JSQMessageData, NSCoding, NSCopying {
+class JSQMessage: NSObject, JSQMessageData, NSCoding, NSCopying {
     
-    private(set) public var senderID: String
-    private(set) public var senderDisplayName: String
-    private(set) public var date: NSDate
+    private(set) var senderID: String
+    private(set) var senderDisplayName: String
+    private(set) var date: NSDate
     
-    private(set) public var isMediaMessage: Bool
-    public var messageHash: Int {
+    private(set) var isMediaMessage: Bool
+    var messageHash: Int {
         
         get {
             
@@ -23,29 +23,29 @@ public class JSQMessage: NSObject, JSQMessageData, NSCoding, NSCopying {
         }
     }
     
-    private(set) public var text: String?
-    private(set) public var media: JSQMessageMediaData?
+    private(set) var text: String?
+    private(set) var media: JSQMessageMediaData?
     
     // MARK: - Initialization
     
-    public required convenience init(senderId: String, senderDisplayName: String, date: NSDate, text: String) {
+    required convenience init(senderId: String, senderDisplayName: String, date: NSDate, text: String) {
         
         self.init(senderId: senderId, senderDisplayName: senderDisplayName, date: date, isMedia: false)
         self.text = text
     }
     
-    public class func message(#senderId: String, senderDisplayName: String, text: String) -> JSQMessage {
+    class func message(#senderId: String, senderDisplayName: String, text: String) -> JSQMessage {
         
         return JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: NSDate(), text: text)
     }
     
-    public required convenience init(senderId: String, senderDisplayName: String, date: NSDate, media: JSQMessageMediaData) {
+    required convenience init(senderId: String, senderDisplayName: String, date: NSDate, media: JSQMessageMediaData) {
         
         self.init(senderId: senderId, senderDisplayName: senderDisplayName, date: date, isMedia: true)
         self.media = media
     }
     
-    public class func message(#senderId: String, senderDisplayName: String, media: JSQMessageMediaData) -> JSQMessage {
+    class func message(#senderId: String, senderDisplayName: String, media: JSQMessageMediaData) -> JSQMessage {
         
         return JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: NSDate(), media: media)
     }
@@ -62,7 +62,7 @@ public class JSQMessage: NSObject, JSQMessageData, NSCoding, NSCopying {
     
     // MARK: - NSObject
     
-    public override func isEqual(object: AnyObject?) -> Bool {
+    override func isEqual(object: AnyObject?) -> Bool {
         
         if !object!.isKindOfClass(self.dynamicType) {
             
@@ -87,7 +87,7 @@ public class JSQMessage: NSObject, JSQMessageData, NSCoding, NSCopying {
         return false
     }
     
-    public override var hash:Int {
+    override var hash:Int {
         
         get {
             
@@ -96,7 +96,7 @@ public class JSQMessage: NSObject, JSQMessageData, NSCoding, NSCopying {
         }
     }
     
-    public override var description: String {
+    override var description: String {
         
         get {
             
@@ -111,7 +111,7 @@ public class JSQMessage: NSObject, JSQMessageData, NSCoding, NSCopying {
     
     // MARK: - NSCoding
     
-    public required init(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         
         self.senderID = aDecoder.decodeObjectForKey("senderID") as? String ?? ""
         self.senderDisplayName = aDecoder.decodeObjectForKey("senderDisplayName") as? String ?? ""
@@ -123,7 +123,7 @@ public class JSQMessage: NSObject, JSQMessageData, NSCoding, NSCopying {
         self.media = aDecoder.decodeObjectForKey("media") as? JSQMessageMediaData
     }
     
-    public func encodeWithCoder(aCoder: NSCoder) {
+    func encodeWithCoder(aCoder: NSCoder) {
         
         aCoder.encodeObject(self.senderID, forKey: "senderID")
         aCoder.encodeObject(self.senderDisplayName, forKey: "senderDisplayName")
@@ -137,7 +137,7 @@ public class JSQMessage: NSObject, JSQMessageData, NSCoding, NSCopying {
     
     // MARK: - NSCopying
     
-    public func copyWithZone(zone: NSZone) -> AnyObject {
+    func copyWithZone(zone: NSZone) -> AnyObject {
         
         if self.isMediaMessage {
             

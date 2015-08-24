@@ -8,31 +8,31 @@
 
 import UIKit
 
-public protocol JSQMessagesLoadEarlierHeaderViewDelegate {
+protocol JSQMessagesLoadEarlierHeaderViewDelegate {
     
     func headerView(headerView: JSQMessagesLoadEarlierHeaderView, didPressLoadButton sender: UIButton?)
 }
 
-public class JSQMessagesLoadEarlierHeaderView: UICollectionReusableView {
+class JSQMessagesLoadEarlierHeaderView: UICollectionReusableView {
     
     static var kJSQMessagesLoadEarlierHeaderViewHeight: CGFloat = 32
     var delegate: JSQMessagesLoadEarlierHeaderViewDelegate?
     
     @IBOutlet var loadButton: UIButton!
     
-    public class func nib() -> UINib {
+    class func nib() -> UINib {
         
         return UINib(nibName: "\(JSQMessagesLoadEarlierHeaderView.self)".jsq_className(), bundle: NSBundle(forClass: JSQMessagesLoadEarlierHeaderView.self))
     }
     
-    public class func headerReuseIdentifier() -> String {
+    class func headerReuseIdentifier() -> String {
         
         return "\(JSQMessagesLoadEarlierHeaderView.self)".jsq_className()
     }
     
     // MARK: - Initialization
     
-    public override func awakeFromNib() {
+    override func awakeFromNib() {
         
         super.awakeFromNib()
         
@@ -46,7 +46,7 @@ public class JSQMessagesLoadEarlierHeaderView: UICollectionReusableView {
     
     // MARK: - Reusable view
     
-    public override var backgroundColor: UIColor? {
+    override var backgroundColor: UIColor? {
         
         didSet {
             

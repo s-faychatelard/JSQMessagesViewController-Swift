@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSCopying {
+class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSCopying {
     
-    public var fileURL: NSURL? {
+    var fileURL: NSURL? {
         
         didSet {
             
@@ -18,7 +18,7 @@ public class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
         }
     }
     
-    public var isReadyToPlay: Bool = false {
+    var isReadyToPlay: Bool = false {
         
         didSet {
             
@@ -30,12 +30,12 @@ public class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
     
     // MARK: - Initialization
     
-    public required init() {
+    required init() {
         
         super.init()
     }
     
-    public required init(fileURL: NSURL?, isReadyToPlay: Bool) {
+    required init(fileURL: NSURL?, isReadyToPlay: Bool) {
         
         self.fileURL = fileURL
         self.isReadyToPlay = isReadyToPlay
@@ -44,12 +44,12 @@ public class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
         super.init()
     }
     
-    public required init(maskAsOutgoing: Bool) {
+    required init(maskAsOutgoing: Bool) {
         
         super.init(maskAsOutgoing: maskAsOutgoing)
     }
     
-    public override var appliesMediaViewMaskAsOutgoing: Bool {
+    override var appliesMediaViewMaskAsOutgoing: Bool {
         
         didSet {
             
@@ -66,7 +66,7 @@ public class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
     
     // MARK: - JSQMessageMediaData protocol
     
-    public override var mediaView: UIView? {
+    override var mediaView: UIView? {
         
         get {
             
@@ -99,7 +99,7 @@ public class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
         }
     }
     
-    public override var mediaHash: Int {
+    override var mediaHash: Int {
         
         get {
             
@@ -109,7 +109,7 @@ public class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
     
     // MARK: - NSObject
     
-    public override func isEqual(object: AnyObject?) -> Bool {
+    override func isEqual(object: AnyObject?) -> Bool {
         
         if !super.isEqual(object) {
             
@@ -124,7 +124,7 @@ public class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
         return false
     }
     
-    public override var hash:Int {
+    override var hash:Int {
         
         get {
             
@@ -132,7 +132,7 @@ public class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
         }
     }
     
-    public override var description: String {
+    override var description: String {
         
         get {
             
@@ -142,7 +142,7 @@ public class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
     
     // MARK: - NSCoding
     
-    public required init(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         
         self.fileURL = aDecoder.decodeObjectForKey("fileURL") as? NSURL
         self.isReadyToPlay = aDecoder.decodeBoolForKey("isReadyToPlay")
@@ -150,7 +150,7 @@ public class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
         super.init(coder: aDecoder)
     }
     
-    public override func encodeWithCoder(aCoder: NSCoder) {
+    override func encodeWithCoder(aCoder: NSCoder) {
         
         super.encodeWithCoder(aCoder)
         
@@ -160,7 +160,7 @@ public class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
     
     // MARK: - NSCopying
     
-    public override func copyWithZone(zone: NSZone) -> AnyObject {
+    override func copyWithZone(zone: NSZone) -> AnyObject {
         
         let copy = self.dynamicType(fileURL: self.fileURL, isReadyToPlay: self.isReadyToPlay)
         copy.appliesMediaViewMaskAsOutgoing = self.appliesMediaViewMaskAsOutgoing

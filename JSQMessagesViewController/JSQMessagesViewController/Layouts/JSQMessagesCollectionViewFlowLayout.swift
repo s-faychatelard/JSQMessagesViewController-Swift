@@ -8,22 +8,22 @@
 
 import UIKit
 
-public let kJSQMessagesCollectionViewCellLabelHeightDefault: CGFloat = 20
-public let kJSQMessagesCollectionViewAvatarSizeDefault: CGFloat = 30
+let kJSQMessagesCollectionViewCellLabelHeightDefault: CGFloat = 20
+let kJSQMessagesCollectionViewAvatarSizeDefault: CGFloat = 30
 
-public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
+class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
-    public override class func layoutAttributesClass() -> AnyClass {
+    override class func layoutAttributesClass() -> AnyClass {
         
         return JSQMessagesCollectionViewLayoutAttributes.self
     }
     
-    public override class func invalidationContextClass() -> AnyClass {
+    override class func invalidationContextClass() -> AnyClass {
         
         return JSQMessagesCollectionViewFlowLayoutInvalidationContext.self
     }
     
-    public var messagesCollectionView: JSQMessagesCollectionView {
+    var messagesCollectionView: JSQMessagesCollectionView {
         
         get {
             
@@ -31,7 +31,7 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         }
     }
     
-    public var springinessEnabled: Bool = false {
+    var springinessEnabled: Bool = false {
         
         didSet {
             
@@ -43,9 +43,9 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
             self.invalidateLayoutWithContext(JSQMessagesCollectionViewFlowLayoutInvalidationContext.context())
         }
     }
-    public var springResistanceFactor: CGFloat = 1000
+    var springResistanceFactor: CGFloat = 1000
     
-    public var itemWidth: CGFloat {
+    var itemWidth: CGFloat {
         
         get {
 
@@ -53,43 +53,28 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         }
     }
     
-    public var messageBubbleFont: UIFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody) {
+    var messageBubbleFont: UIFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody) {
         
         didSet {
             
             self.invalidateLayoutWithContext(JSQMessagesCollectionViewFlowLayoutInvalidationContext.context())
         }
     }
-    public var messageBubbleLeftRightMargin: CGFloat = 50 {
+    var messageBubbleLeftRightMargin: CGFloat = 50 {
         
         didSet {
             
             self.invalidateLayoutWithContext(JSQMessagesCollectionViewFlowLayoutInvalidationContext.context())
         }
     }
-    public var messageBubbleTextViewFrameInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 6) {
+    var messageBubbleTextViewFrameInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 6) {
         
         didSet {
             
             self.invalidateLayoutWithContext(JSQMessagesCollectionViewFlowLayoutInvalidationContext.context())
         }
     }
-    public var messageBubbleTextViewTextContainerInsets: UIEdgeInsets = UIEdgeInsetsMake(7, 14, 7, 14) {
-        
-        didSet {
-            
-            self.invalidateLayoutWithContext(JSQMessagesCollectionViewFlowLayoutInvalidationContext.context())
-        }
-    }
-    
-    public var incomingAvatarViewSize: CGSize = CGSizeMake(30, 30) {
-        
-        didSet {
-            
-            self.invalidateLayoutWithContext(JSQMessagesCollectionViewFlowLayoutInvalidationContext.context())
-        }
-    }
-    public var outgoingAvatarViewSize: CGSize = CGSizeMake(30, 30) {
+    var messageBubbleTextViewTextContainerInsets: UIEdgeInsets = UIEdgeInsetsMake(7, 14, 7, 14) {
         
         didSet {
             
@@ -97,7 +82,22 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         }
     }
     
-    public var cacheLimit: Int {
+    var incomingAvatarViewSize: CGSize = CGSizeMake(30, 30) {
+        
+        didSet {
+            
+            self.invalidateLayoutWithContext(JSQMessagesCollectionViewFlowLayoutInvalidationContext.context())
+        }
+    }
+    var outgoingAvatarViewSize: CGSize = CGSizeMake(30, 30) {
+        
+        didSet {
+            
+            self.invalidateLayoutWithContext(JSQMessagesCollectionViewFlowLayoutInvalidationContext.context())
+        }
+    }
+    
+    var cacheLimit: Int {
         
         get {
             
@@ -140,7 +140,7 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    public override init() {
+    override init() {
         
         super.init()
         
@@ -149,7 +149,7 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         self.jsq_configureFlowLayout()
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
         
@@ -173,7 +173,7 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     // MARK: - Collection view flow layout
     
-    public override func invalidateLayoutWithContext(context: UICollectionViewLayoutInvalidationContext) {
+    override func invalidateLayoutWithContext(context: UICollectionViewLayoutInvalidationContext) {
         
         if let context = context as? JSQMessagesCollectionViewFlowLayoutInvalidationContext {
             
@@ -197,7 +197,7 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         super.invalidateLayoutWithContext(context)
     }
     
-    public override func prepareLayout() {
+    override func prepareLayout() {
         
         super.prepareLayout()
         
@@ -216,7 +216,7 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         }
     }
     
-    public override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
+    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
         
         if let attributesInRect = super.layoutAttributesForElementsInRect(rect) as? [JSQMessagesCollectionViewLayoutAttributes] {
         
@@ -260,7 +260,7 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         return []
     }
     
-    public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
+    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
         
         let customAttributes = super.layoutAttributesForItemAtIndexPath(indexPath) as! JSQMessagesCollectionViewLayoutAttributes
         
@@ -272,7 +272,7 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         return customAttributes
     }
     
-    public override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
 
         if self.springinessEnabled {
             
@@ -302,7 +302,7 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         return false
     }
     
-    public override func prepareForCollectionViewUpdates(updateItems: [AnyObject]!) {
+    override func prepareForCollectionViewUpdates(updateItems: [AnyObject]!) {
         
         super.prepareForCollectionViewUpdates(updateItems)
         

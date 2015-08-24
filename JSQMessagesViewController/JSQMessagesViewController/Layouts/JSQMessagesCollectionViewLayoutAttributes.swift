@@ -8,21 +8,21 @@
 
 import UIKit
 
-public class JSQMessagesCollectionViewLayoutAttributes: UICollectionViewLayoutAttributes, NSCopying {
+class JSQMessagesCollectionViewLayoutAttributes: UICollectionViewLayoutAttributes, NSCopying {
     
-    public var messageBubbleFont: UIFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-    public var messageBubbleContainerViewWidth: CGFloat = 0
-    public var textViewTextContainerInsets: UIEdgeInsets = UIEdgeInsetsZero
-    public var textViewFrameInsets: UIEdgeInsets = UIEdgeInsetsZero
-    public var incomingAvatarViewSize: CGSize = CGSizeZero
-    public var outgoingAvatarViewSize: CGSize = CGSizeZero
-    public var cellTopLabelHeight: CGFloat = 0
-    public var messageBubbleTopLabelHeight: CGFloat = 0
-    public var cellBottomLabelHeight: CGFloat = 0
+    var messageBubbleFont: UIFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+    var messageBubbleContainerViewWidth: CGFloat = 0
+    var textViewTextContainerInsets: UIEdgeInsets = UIEdgeInsetsZero
+    var textViewFrameInsets: UIEdgeInsets = UIEdgeInsetsZero
+    var incomingAvatarViewSize: CGSize = CGSizeZero
+    var outgoingAvatarViewSize: CGSize = CGSizeZero
+    var cellTopLabelHeight: CGFloat = 0
+    var messageBubbleTopLabelHeight: CGFloat = 0
+    var cellBottomLabelHeight: CGFloat = 0
     
     // MARK: - NSObject
     
-    public override func isEqual(object: AnyObject?) -> Bool {
+    override func isEqual(object: AnyObject?) -> Bool {
         
         if !object!.isKindOfClass(self.dynamicType) {
             
@@ -51,7 +51,7 @@ public class JSQMessagesCollectionViewLayoutAttributes: UICollectionViewLayoutAt
         return super.isEqual(object)
     }
     
-    public override var hash:Int {
+    override var hash:Int {
         
         get {
             
@@ -61,7 +61,7 @@ public class JSQMessagesCollectionViewLayoutAttributes: UICollectionViewLayoutAt
     
     // MARK: - NSCopying
     
-    public override func copyWithZone(zone: NSZone) -> AnyObject {
+    override func copyWithZone(zone: NSZone) -> AnyObject {
         
         var copy: AnyObject = super.copyWithZone(zone)
         

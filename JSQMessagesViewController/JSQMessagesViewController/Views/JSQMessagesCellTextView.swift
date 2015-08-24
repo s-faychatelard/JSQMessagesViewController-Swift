@@ -8,9 +8,9 @@
 
 import UIKit
 
-public class JSQMessagesCellTextView: UITextView {
+class JSQMessagesCellTextView: UITextView {
     
-    public override func awakeFromNib() {
+    override func awakeFromNib() {
         
         super.awakeFromNib()
         
@@ -35,7 +35,7 @@ public class JSQMessagesCellTextView: UITextView {
     }
     
     //  prevent selecting text
-    public override var selectedRange: NSRange {
+    override var selectedRange: NSRange {
         
         didSet {
             
@@ -48,7 +48,7 @@ public class JSQMessagesCellTextView: UITextView {
         }
     }
     
-    public override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+    override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
         
         //  ignore double-tap to prevent copy/define/etc. menu from showing
         if let tap = gestureRecognizer as? UITapGestureRecognizer {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc public protocol JSQMessagesCollectionViewDataSource: UICollectionViewDataSource {
+@objc protocol JSQMessagesCollectionViewDataSource: UICollectionViewDataSource {
     
     var senderID: String { get }
     var senderDisplayName: String { get }

@@ -8,10 +8,10 @@
 
 import Foundation
 
-public class JSQPhotoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSCopying {
+class JSQPhotoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSCopying {
     
     private var _image: UIImage?
-    public var image: UIImage? {
+    var image: UIImage? {
         
         get {
             
@@ -33,24 +33,24 @@ public class JSQPhotoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
     
     // MARK: - Initialization
     
-    public required init() {
+    required init() {
         
         super.init()
     }
 
-    public required init(image: UIImage?) {
+    required init(image: UIImage?) {
         
         super.init(maskAsOutgoing: true)
         
         self.image = image?.copy() as? UIImage
     }
 
-    public required init(maskAsOutgoing: Bool) {
+    required init(maskAsOutgoing: Bool) {
 
         super.init(maskAsOutgoing: maskAsOutgoing)
     }
     
-    public override var appliesMediaViewMaskAsOutgoing: Bool {
+    override var appliesMediaViewMaskAsOutgoing: Bool {
         
         didSet {
             
@@ -67,7 +67,7 @@ public class JSQPhotoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
     
     // MARK: - JSQMessageMediaData protocol
     
-    public override var mediaView: UIView? {
+    override var mediaView: UIView? {
 
         get {
             
@@ -94,7 +94,7 @@ public class JSQPhotoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
         }
     }
     
-    public override var mediaHash: Int {
+    override var mediaHash: Int {
         
         get {
             
@@ -104,7 +104,7 @@ public class JSQPhotoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
     
     // MARK: - NSObject
     
-    public override var hash:Int {
+    override var hash:Int {
         
         get {
             
@@ -112,7 +112,7 @@ public class JSQPhotoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
         }
     }
     
-    public override var description: String {
+    override var description: String {
         
         get {
             
@@ -122,14 +122,14 @@ public class JSQPhotoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
     
     // MARK: - NSCoding
     
-    public required init(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
         
         self.image = aDecoder.decodeObjectForKey("image") as? UIImage
     }
     
-    public override func encodeWithCoder(aCoder: NSCoder) {
+    override func encodeWithCoder(aCoder: NSCoder) {
         
         super.encodeWithCoder(aCoder)
         
@@ -138,7 +138,7 @@ public class JSQPhotoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
     
     // MARK: - NSCopying
     
-    public override func copyWithZone(zone: NSZone) -> AnyObject {
+    override func copyWithZone(zone: NSZone) -> AnyObject {
         
         let copy = self.dynamicType(image: UIImage(CGImage: self.image?.CGImage))
         copy.appliesMediaViewMaskAsOutgoing = self.appliesMediaViewMaskAsOutgoing

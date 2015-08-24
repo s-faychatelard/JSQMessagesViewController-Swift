@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class JSQMessagesTypingIndicatorFooterView: UICollectionReusableView {
+class JSQMessagesTypingIndicatorFooterView: UICollectionReusableView {
     
     static var kJSQMessagesTypingIndicatorFooterViewHeight: CGFloat = 46
     
@@ -18,19 +18,19 @@ public class JSQMessagesTypingIndicatorFooterView: UICollectionReusableView {
     @IBOutlet var typingIndicatorImageView: UIImageView!
     @IBOutlet var typingIndicatorImageViewRightHorizontalConstraint: NSLayoutConstraint!
     
-    public class func nib() -> UINib {
+    class func nib() -> UINib {
     
         return UINib(nibName: "\(JSQMessagesTypingIndicatorFooterView.self)".jsq_className(), bundle: NSBundle(forClass: JSQMessagesTypingIndicatorFooterView.self))
     }
     
-    public class func footerReuseIdentifier() -> String {
+    class func footerReuseIdentifier() -> String {
         
         return "\(JSQMessagesTypingIndicatorFooterView.self)".jsq_className()
     }
     
     // MARK: - Initialization
     
-    public override func awakeFromNib() {
+    override func awakeFromNib() {
         
         super.awakeFromNib()
         
@@ -43,7 +43,7 @@ public class JSQMessagesTypingIndicatorFooterView: UICollectionReusableView {
     
     // MARK: - Reusable view
     
-    public override var backgroundColor: UIColor? {
+    override var backgroundColor: UIColor? {
         
         didSet {
         
