@@ -23,12 +23,12 @@ public class JSQMessagesAvatarImage: NSObject, JSQMessageAvatarImageDataSource, 
         super.init()
     }
     
-    public class func avatar(#image: UIImage) -> JSQMessagesAvatarImage {
+    public class func avatar(image image: UIImage) -> JSQMessagesAvatarImage {
         
         return JSQMessagesAvatarImage(avatarImage: image, highlightedImage: image, placeholderImage: image)
     }
     
-    public class func avatar(#placeholder: UIImage) -> JSQMessagesAvatarImage {
+    public class func avatar(placeholder placeholder: UIImage) -> JSQMessagesAvatarImage {
         
         return JSQMessagesAvatarImage(avatarImage: nil, highlightedImage: nil, placeholderImage: placeholder)
     }
@@ -52,6 +52,6 @@ public class JSQMessagesAvatarImage: NSObject, JSQMessageAvatarImageDataSource, 
     
     public func copyWithZone(zone: NSZone) -> AnyObject {
      
-        return self.dynamicType(avatarImage: UIImage(CGImage: self.avatarImage?.CGImage), highlightedImage: UIImage(CGImage: self.avatarHighlightedImage?.CGImage), placeholderImage: UIImage(CGImage: self.avatarPlaceholderImage.CGImage)!)
+        return self.dynamicType.init(avatarImage: UIImage(CGImage: self.avatarImage!.CGImage!), highlightedImage: UIImage(CGImage: self.avatarHighlightedImage!.CGImage!), placeholderImage: UIImage(CGImage: self.avatarPlaceholderImage.CGImage!))
     }
 }

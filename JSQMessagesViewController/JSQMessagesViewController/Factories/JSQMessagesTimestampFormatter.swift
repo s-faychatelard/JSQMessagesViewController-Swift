@@ -12,8 +12,8 @@ public class JSQMessagesTimestampFormatter: NSObject {
 
     private(set) public var dateFormatter: NSDateFormatter = NSDateFormatter()
     
-    private(set) public var dateTextAttributes: [NSObject: AnyObject]
-    private(set) public var timeTextAttributes: [NSObject: AnyObject]
+    private(set) public var dateTextAttributes: [String : AnyObject]
+    private(set) public var timeTextAttributes: [String : AnyObject]
     
     public static let sharedFormatter: JSQMessagesTimestampFormatter = JSQMessagesTimestampFormatter()
     
@@ -24,7 +24,7 @@ public class JSQMessagesTimestampFormatter: NSObject {
         
         let color = UIColor.lightGrayColor()
         
-        var paragraphStyle: NSMutableParagraphStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
+        let paragraphStyle: NSMutableParagraphStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.alignment = .Center
         
         self.dateTextAttributes = [

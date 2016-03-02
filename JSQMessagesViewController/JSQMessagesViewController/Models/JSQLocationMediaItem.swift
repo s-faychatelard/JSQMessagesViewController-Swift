@@ -11,7 +11,7 @@ import MapKit
 
 public typealias JSQLocationMediaItemCompletionBlock = (() -> Void)
 
-public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotation, NSCoding, NSCopying {
+public class JSQLocationMediaItem: JSQMediaItem, MKAnnotation {
 
     public var location: CLLocation? {
         
@@ -98,20 +98,20 @@ public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotati
             
             if error != nil {
                 
-                println("\(__FUNCTION__) Error creating map snapshot: \(error)")
+                print("\(__FUNCTION__) Error creating map snapshot: \(error)")
                 return
             }
             
             let pin = MKPinAnnotationView(annotation: nil, reuseIdentifier: nil)
-            var coordinatePoint = snapshot.pointForCoordinate(location.coordinate)
-            let image: UIImage = snapshot.image
+            var coordinatePoint = snapshot!.pointForCoordinate(location.coordinate)
+            let image: UIImage = snapshot!.image
             
             coordinatePoint.x += pin.centerOffset.x - (CGRectGetWidth(pin.bounds) / 2)
             coordinatePoint.y += pin.centerOffset.y - (CGRectGetHeight(pin.bounds) / 2)
             
             UIGraphicsBeginImageContextWithOptions(image.size, true, image.scale)
             image.drawAtPoint(CGPointZero)
-            pin.image.drawAtPoint(coordinatePoint)
+            pin.image?.drawAtPoint(coordinatePoint)
             self.cachedMapSnapshotImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             
@@ -138,7 +138,7 @@ public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotati
         
         get {
             
-            if let location = self.location,
+            if let _ = self.location,
                 let cachedMapSnapshotImage = self.cachedMapSnapshotImage {
                     
                 if let cachedMapImageView = self.cachedMapImageView {
@@ -229,7 +229,7 @@ public class JSQLocationMediaItem: JSQMediaItem, JSQMessageMediaData, MKAnnotati
     
     public override func copyWithZone(zone: NSZone) -> AnyObject {
         
-        let copy = self.dynamicType(location: self.location)
+        let copy = self.dynamicType.init(location: self.location)
         copy.appliesMediaViewMaskAsOutgoing = self.appliesMediaViewMaskAsOutgoing
         return copy
     }

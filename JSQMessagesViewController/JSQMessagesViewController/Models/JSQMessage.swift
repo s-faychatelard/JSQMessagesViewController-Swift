@@ -34,7 +34,7 @@ public class JSQMessage: NSObject, JSQMessageData, NSCoding, NSCopying {
         self.text = text
     }
     
-    public class func message(#senderId: String, senderDisplayName: String, text: String) -> JSQMessage {
+    public class func message(senderId senderId: String, senderDisplayName: String, text: String) -> JSQMessage {
         
         return JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: NSDate(), text: text)
     }
@@ -45,7 +45,7 @@ public class JSQMessage: NSObject, JSQMessageData, NSCoding, NSCopying {
         self.media = media
     }
     
-    public class func message(#senderId: String, senderDisplayName: String, media: JSQMessageMediaData) -> JSQMessage {
+    public class func message(senderId senderId: String, senderDisplayName: String, media: JSQMessageMediaData) -> JSQMessage {
         
         return JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: NSDate(), media: media)
     }
@@ -141,9 +141,9 @@ public class JSQMessage: NSObject, JSQMessageData, NSCoding, NSCopying {
         
         if self.isMediaMessage {
             
-            return self.dynamicType(senderId: self.senderID, senderDisplayName: self.senderDisplayName, date: self.date, media: self.media!)
+            return self.dynamicType.init(senderId: self.senderID, senderDisplayName: self.senderDisplayName, date: self.date, media: self.media!)
         }
         
-        return self.dynamicType(senderId: self.senderID, senderDisplayName: self.senderDisplayName, date: self.date, text: self.text!)
+        return self.dynamicType.init(senderId: self.senderID, senderDisplayName: self.senderDisplayName, date: self.date, text: self.text!)
     }
 }

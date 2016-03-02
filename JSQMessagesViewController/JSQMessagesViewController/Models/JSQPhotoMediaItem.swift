@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class JSQPhotoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSCopying {
+public class JSQPhotoMediaItem: JSQMediaItem {
     
     private var _image: UIImage?
     public var image: UIImage? {
@@ -71,7 +71,7 @@ public class JSQPhotoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
 
         get {
             
-            if let cachedImageView = self.cachedImageView {
+            if let _ = self.cachedImageView {
                 
                 return self.cachedImageView
             }
@@ -140,7 +140,7 @@ public class JSQPhotoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
     
     public override func copyWithZone(zone: NSZone) -> AnyObject {
         
-        let copy = self.dynamicType(image: UIImage(CGImage: self.image?.CGImage))
+        let copy = self.dynamicType.init(image: UIImage(CGImage: self.image!.CGImage!))
         copy.appliesMediaViewMaskAsOutgoing = self.appliesMediaViewMaskAsOutgoing
         return copy
     }

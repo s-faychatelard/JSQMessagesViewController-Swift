@@ -29,9 +29,8 @@ public class JSQMessagesCollectionView: UICollectionView, JSQMessagesCollectionV
     // MARK: - Initialization
     
     func jsq_configureCollectionView() {
-        
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
+
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = UIColor.whiteColor()
         self.keyboardDismissMode = .None
         self.alwaysBounceVertical = true
@@ -57,7 +56,7 @@ public class JSQMessagesCollectionView: UICollectionView, JSQMessagesCollectionV
         self.jsq_configureCollectionView()
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
         

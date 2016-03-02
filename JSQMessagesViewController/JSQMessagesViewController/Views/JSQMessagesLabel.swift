@@ -22,7 +22,7 @@ public class JSQMessagesLabel: UILabel {
     
     func jsq_configureLabel() {
         
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.translatesAutoresizingMaskIntoConstraints = false
         
         self.textInsets = UIEdgeInsetsZero
     }
@@ -34,7 +34,7 @@ public class JSQMessagesLabel: UILabel {
         self.jsq_configureLabel()
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
         

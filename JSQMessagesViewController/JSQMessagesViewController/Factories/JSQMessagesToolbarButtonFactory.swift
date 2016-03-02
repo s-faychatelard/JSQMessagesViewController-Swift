@@ -44,12 +44,14 @@ public class JSQMessagesToolbarButtonFactory {
         sendButton.backgroundColor = UIColor.clearColor()
         sendButton.tintColor = UIColor.jsq_messageBubbleBlueColor()
         
-        let maxHeigth: CGFloat = 32
-        let options: NSStringDrawingOptions = NSStringDrawingOptions.UsesLineFragmentOrigin|NSStringDrawingOptions.UsesFontLeading
-        let attributes: [NSObject : AnyObject] = sendButton.titleLabel?.font != nil ? [ NSFontAttributeName: sendButton.titleLabel!.font!] : [:]
+        let maxHeight: CGFloat = 32
+        let options: NSStringDrawingOptions = [NSStringDrawingOptions.UsesLineFragmentOrigin, NSStringDrawingOptions.UsesFontLeading]
+        let attributes: [String : AnyObject] = sendButton.titleLabel?.font != nil ? [ NSFontAttributeName: sendButton.titleLabel!.font!] : [:]
         
-        let sendTitleRect = (sendTitle as NSString).boundingRectWithSize(CGSizeMake(CGFloat.max, maxHeigth), options: options, attributes: attributes, context: nil)
-        
+        let sendTitleRect = (sendTitle as NSString).boundingRectWithSize(CGSizeMake(CGFloat.max, maxHeight), options: options, attributes: attributes, context: nil)
+
+        sendButton.frame = CGRectMake(0, 0, CGRectGetWidth(CGRectIntegral(sendTitleRect)), maxHeight)
+
         return sendButton
     }
 }

@@ -24,13 +24,13 @@ public class JSQMessagesMediaViewBubbleImageMasker {
     
     // MARK: - View masking
     
-    public func applyOutgoingBubbleImageMask(#mediaView: UIView) {
+    public func applyOutgoingBubbleImageMask(mediaView mediaView: UIView) {
         
         let bubbleImageData = self.bubbleImageFactory.outgoingMessagesBubbleImage(color: UIColor.whiteColor())
         self.jsq_maskView(mediaView, image: bubbleImageData.messageBubbleImage)
     }
     
-    public func applyIncomingBubbleImageMask(#mediaView: UIView) {
+    public func applyIncomingBubbleImageMask(mediaView mediaView: UIView) {
         
         let bubbleImageData = self.bubbleImageFactory.incomingMessagesBubbleImage(color: UIColor.whiteColor())
         self.jsq_maskView(mediaView, image: bubbleImageData.messageBubbleImage)

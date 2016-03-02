@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSCopying {
+public class JSQVideoMediaItem: JSQMediaItem {
     
     public var fileURL: NSURL? {
         
@@ -75,9 +75,9 @@ public class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
                 return nil
             }
 
-            if let fileURL = self.fileURL {
+            if let _ = self.fileURL {
                 
-                if let cachedVideoImageView = self.cachedVideoImageView {
+                if let _ = self.cachedVideoImageView {
                     
                     return self.cachedVideoImageView
                 }
@@ -162,7 +162,7 @@ public class JSQVideoMediaItem: JSQMediaItem, JSQMessageMediaData, NSCoding, NSC
     
     public override func copyWithZone(zone: NSZone) -> AnyObject {
         
-        let copy = self.dynamicType(fileURL: self.fileURL, isReadyToPlay: self.isReadyToPlay)
+        let copy = self.dynamicType.init(fileURL: self.fileURL, isReadyToPlay: self.isReadyToPlay)
         copy.appliesMediaViewMaskAsOutgoing = self.appliesMediaViewMaskAsOutgoing
         return copy
     }

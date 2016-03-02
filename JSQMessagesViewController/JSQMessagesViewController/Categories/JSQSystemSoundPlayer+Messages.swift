@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Dviance. All rights reserved.
 //
 
+import JSQSystemSoundPlayer_Swift
+
 let kJSQMessageReceivedSoundName = "message_received"
 let kJSQMessageSentSoundName = "message_sent"
 
@@ -31,7 +33,7 @@ extension JSQSystemSoundPlayer {
         JSQSystemSoundPlayer.jsq_playSoundFromJSQMessagesBundle(name: kJSQMessageSentSoundName, asAlert: true)
     }
     
-    private class func jsq_playSoundFromJSQMessagesBundle(#name: String, asAlert: Bool) {
+    private class func jsq_playSoundFromJSQMessagesBundle(name name: String, asAlert: Bool) {
         
         // Save sound player original bundle
         let originalPlayerBundleIdentifier = JSQSystemSoundPlayer.sharedPlayer.bundle

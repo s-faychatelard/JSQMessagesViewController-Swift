@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class JSQMessagesCollectionViewLayoutAttributes: UICollectionViewLayoutAttributes, NSCopying {
+public class JSQMessagesCollectionViewLayoutAttributes: UICollectionViewLayoutAttributes {
     
     public var messageBubbleFont: UIFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
     public var messageBubbleContainerViewWidth: CGFloat = 0
@@ -63,7 +63,7 @@ public class JSQMessagesCollectionViewLayoutAttributes: UICollectionViewLayoutAt
     
     public override func copyWithZone(zone: NSZone) -> AnyObject {
         
-        var copy: AnyObject = super.copyWithZone(zone)
+        let copy: AnyObject = super.copyWithZone(zone)
         
         if copy.representedElementCategory != .Cell {
             

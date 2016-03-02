@@ -21,7 +21,7 @@ class TableViewController: UITableViewController, JSQDemoViewControllerDelegate 
         
         super.viewWillAppear(animated)
         
-        if let indexPathForSelectedRow = self.tableView.indexPathForSelectedRow() {
+        if let indexPathForSelectedRow = self.tableView.indexPathForSelectedRow {
         
             self.tableView.deselectRowAtIndexPath(indexPathForSelectedRow, animated: true)
         }
@@ -48,7 +48,7 @@ class TableViewController: UITableViewController, JSQDemoViewControllerDelegate 
         
         let cellIdentifier = "CellIdentifier"
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
         if cell == nil {
             
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)
@@ -85,7 +85,7 @@ class TableViewController: UITableViewController, JSQDemoViewControllerDelegate 
     
     override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         
-        return section == (tableView.numberOfSections() - 1) ? "Copyright © 2014\nSylvain Fay-Châtelard, Jesse Squires\nMIT License" : nil
+        return section == (tableView.numberOfSections - 1) ? "Copyright © 2014\nSylvain Fay-Châtelard, Jesse Squires\nMIT License" : nil
     }
     
     // MARK: - Table view delegate

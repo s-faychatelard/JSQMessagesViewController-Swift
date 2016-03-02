@@ -35,12 +35,12 @@ public class JSQMessagesBubbleImageFactory {
     
     // MARK: - Public
     
-    public func outgoingMessagesBubbleImage(#color: UIColor) -> JSQMessagesBubbleImage {
+    public func outgoingMessagesBubbleImage(color color: UIColor) -> JSQMessagesBubbleImage {
 
         return self.jsq_messagesBubbleImage(color: color, flippedForIncoming: false)
     }
     
-    public func incomingMessagesBubbleImage(#color: UIColor) -> JSQMessagesBubbleImage {
+    public func incomingMessagesBubbleImage(color color: UIColor) -> JSQMessagesBubbleImage {
         
         return self.jsq_messagesBubbleImage(color: color, flippedForIncoming: true)
     }
@@ -53,7 +53,7 @@ public class JSQMessagesBubbleImageFactory {
         return UIEdgeInsetsMake(center.y, center.x, center.y, center.x)
     }
     
-    func jsq_messagesBubbleImage(#color: UIColor, flippedForIncoming: Bool) -> JSQMessagesBubbleImage {
+    func jsq_messagesBubbleImage(color color: UIColor, flippedForIncoming: Bool) -> JSQMessagesBubbleImage {
         
         var normalBubble = self.bubbleImage.jsq_imageMaskedWithColor(color)
         var highlightedBubble = self.bubbleImage.jsq_imageMaskedWithColor(color.jsq_colorByDarkeningColorWithValue(0.12))
@@ -72,9 +72,9 @@ public class JSQMessagesBubbleImageFactory {
     
     func jsq_horizontallyFlippedImage(image: UIImage) -> UIImage {
         
-        if let image = UIImage(CGImage: image.CGImage, scale: image.scale, orientation: .UpMirrored) {
+        if let cgImage = image.CGImage {
             
-            return image
+            return UIImage(CGImage: cgImage, scale: image.scale, orientation: .UpMirrored)
         }
         
         return image

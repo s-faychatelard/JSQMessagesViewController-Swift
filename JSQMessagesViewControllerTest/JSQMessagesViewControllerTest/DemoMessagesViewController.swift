@@ -8,8 +8,8 @@
 
 import UIKit
 import MapKit
-import JSQSystemSoundPlayer
-import JSQMessagesViewController
+import JSQSystemSoundPlayer_Swift
+import JSQMessagesViewController_Swift
 
 protocol JSQDemoViewControllerDelegate {
     
@@ -84,7 +84,9 @@ class DemoMessagesViewController: JSQMessagesViewController, UIActionSheetDelega
         
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let nc = sb.instantiateInitialViewController() as! UINavigationController
-        self.navigationController?.pushViewController(nc.topViewController, animated: true)
+        if let vc = nc.topViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     // MARK: - Actions
@@ -111,10 +113,14 @@ class DemoMessagesViewController: JSQMessagesViewController, UIActionSheetDelega
         if let copyMessage = copyMessage {
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1*NSEC_PER_SEC)), dispatch_get_main_queue()) {
-                
-                var userIds = self.demoModel.users.keys.array
-                userIds.removeAtIndex(find(userIds, self.senderID)!)
-                let randomUserId = userIds[Int(arc4random_uniform(UInt32(userIds.count)))]
+
+                let userIds = self.demoModel.users.keys
+                if let index = self.demoModel.users.indexForKey(self.senderID) {
+                    self.demoModel.users.removeAtIndex(index)
+                }
+                let wantedIndex = Int(arc4random_uniform(UInt32(userIds.count)))
+                let index = userIds.startIndex.advancedBy(wantedIndex)
+                let randomUserId = userIds[index]
                 
                 var newMessage: JSQMessage?
                 var newMediaData: JSQMessageMediaData?
@@ -128,7 +134,7 @@ class DemoMessagesViewController: JSQMessagesViewController, UIActionSheetDelega
                         
                         let photoItemCopy = copyMediaData.copy() as! JSQPhotoMediaItem
                         photoItemCopy.appliesMediaViewMaskAsOutgoing = false
-                        newMediaAttachmentCopy = UIImage(CGImage: photoItemCopy.image!.CGImage)
+                        newMediaAttachmentCopy = UIImage(CGImage: photoItemCopy.image!.CGImage!)
                         
                         /**
                         *  Set image to nil to simulate "downloading" the image
@@ -166,7 +172,7 @@ class DemoMessagesViewController: JSQMessagesViewController, UIActionSheetDelega
                     }
                     else {
 
-                        println("\(__FUNCTION__) error: unrecognized media item")
+                        print("\(__FUNCTION__) error: unrecognized media item")
                     }
                     
                     newMessage = JSQMessage.message(senderId: randomUserId, senderDisplayName: self.demoModel.users[randomUserId]!, media: newMediaData!)
@@ -211,7 +217,7 @@ class DemoMessagesViewController: JSQMessagesViewController, UIActionSheetDelega
                         }
                         else {
                             
-                            println("\(__FUNCTION__) error: unrecognized media item")
+                            print("\(__FUNCTION__) error: unrecognized media item")
                         }
                     }
                 }
@@ -407,7 +413,7 @@ class DemoMessagesViewController: JSQMessagesViewController, UIActionSheetDelega
             }
             
             cell.textView?.linkTextAttributes = [
-                NSForegroundColorAttributeName: cell.textView!.textColor,
+                NSForegroundColorAttributeName: cell.textView!.textColor!,
                 NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue
             ]
         }
@@ -442,7 +448,7 @@ class DemoMessagesViewController: JSQMessagesViewController, UIActionSheetDelega
     
     func customAction(sender: AnyObject?) {
         
-        println("Custom action received! Sender: \(sender)")
+        print("Custom action received! Sender: \(sender)")
         
         UIAlertView(title: "Custom Action", message: nil, delegate: nil, cancelButtonTitle: "OK").show()
     }
@@ -504,22 +510,22 @@ class DemoMessagesViewController: JSQMessagesViewController, UIActionSheetDelega
     
     func collectionView(collectionView: JSQMessagesCollectionView, header: JSQMessagesLoadEarlierHeaderView, didTapLoadEarlierMessagesButton button: UIButton?) {
         
-        println("Load earlier messages!")
+        print("Load earlier messages!")
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView, didTapAvatarImageView imageView: UIImageView, atIndexPath indexPath: NSIndexPath) {
         
-        println("Tapped avatar!")
+        print("Tapped avatar!")
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath) {
         
-        println("Tapped message bubble!")
+        print("Tapped message bubble!")
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView, didTapCellAtIndexPath indexPath: NSIndexPath, touchLocation: CGPoint) {
         
-        println("Tapped cell at \(NSStringFromCGPoint(touchLocation))!")
+        print("Tapped cell at \(NSStringFromCGPoint(touchLocation))!")
     }    
 }
 

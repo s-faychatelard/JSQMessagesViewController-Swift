@@ -57,10 +57,10 @@ extension UIColor {
         
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let newColor = CGColorCreate(colorSpace, newComponents)
-        if let retColor = UIColor(CGColor: newColor) {
-            return retColor
+        if let newColor = newColor {
+            return UIColor(CGColor: newColor)
         }
-        
+
         return self
     }
 }

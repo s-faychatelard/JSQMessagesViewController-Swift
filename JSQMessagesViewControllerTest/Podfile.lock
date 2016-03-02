@@ -1,0 +1,27 @@
+PODS:
+  - JSQMessagesViewController-Swift (1.0):
+    - JSQSystemSoundPlayer-Swift (= 1.0)
+  - JSQSystemSoundPlayer-Swift (1.0)
+
+DEPENDENCIES:
+  - JSQMessagesViewController-Swift (from `../`)
+  - JSQSystemSoundPlayer-Swift (from `https://github.com/s-faychatelard/JSQSystemSoundPlayer-Swift.git`,
+    tag `1.0`)
+
+EXTERNAL SOURCES:
+  JSQMessagesViewController-Swift:
+    :path: ../
+  JSQSystemSoundPlayer-Swift:
+    :git: https://github.com/s-faychatelard/JSQSystemSoundPlayer-Swift.git
+    :tag: '1.0'
+
+CHECKOUT OPTIONS:
+  JSQSystemSoundPlayer-Swift:
+    :git: https://github.com/s-faychatelard/JSQSystemSoundPlayer-Swift.git
+    :tag: '1.0'
+
+SPEC CHECKSUMS:
+  JSQMessagesViewController-Swift: 8e9762d87763476012f01f249b5e83990f96246c
+  JSQSystemSoundPlayer-Swift: 4d5013256530f36ec4934b7e4c9807040654ea11
+
+COCOAPODS: 0.39.0

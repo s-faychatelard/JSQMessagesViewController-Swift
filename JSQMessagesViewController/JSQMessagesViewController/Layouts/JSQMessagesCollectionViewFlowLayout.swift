@@ -149,7 +149,7 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         self.jsq_configureFlowLayout()
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
         
@@ -206,7 +206,7 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
             let padding: CGFloat = -100
             let visibleRect = CGRectInset(self.collectionView?.bounds ?? CGRectZero, padding, padding)
             
-            if let visibleItems = super.layoutAttributesForElementsInRect(visibleRect) as? [UICollectionViewLayoutAttributes] {
+            if let visibleItems = super.layoutAttributesForElementsInRect(visibleRect) {
             
                 let visibleItemsIndexPaths = visibleItems.map { $0.indexPath } as [NSIndexPath]
 
@@ -215,8 +215,8 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
             }
         }
     }
-    
-    public override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
+
+    public override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
         if let attributesInRect = super.layoutAttributesForElementsInRect(rect) as? [JSQMessagesCollectionViewLayoutAttributes] {
         
@@ -260,7 +260,7 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         return []
     }
     
-    public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
+    public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         
         let customAttributes = super.layoutAttributesForItemAtIndexPath(indexPath) as! JSQMessagesCollectionViewLayoutAttributes
         
@@ -286,7 +286,7 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
                 
                 self.jsq_adjust(springBehaviour, forTouchLocation: touchLocation)
                 
-                if let item = springBehaviour.items.first as? UIDynamicItem {
+                if let item = springBehaviour.items.first {
                     
                     self.dynamicAnimator.updateItemUsingCurrentState(item)
                 }
@@ -301,47 +301,44 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         
         return false
     }
-    
-    public override func prepareForCollectionViewUpdates(updateItems: [AnyObject]!) {
+
+    public override func prepareForCollectionViewUpdates(updateItems: [UICollectionViewUpdateItem]) {
         
         super.prepareForCollectionViewUpdates(updateItems)
         
         for updateItem in updateItems {
             
-            if let updateItem = updateItem as? UICollectionViewUpdateItem {
-               
-                if let indexPathAfterUpdate = updateItem.indexPathAfterUpdate {
-                    
-                    if self.springinessEnabled && self.dynamicAnimator.layoutAttributesForCellAtIndexPath(indexPathAfterUpdate) != nil {
-                        
-                        return
-                    }
-                    
-                    let collectionViewHeight = self.messagesCollectionView.bounds.height
-                    let attributes = JSQMessagesCollectionViewLayoutAttributes(forCellWithIndexPath: indexPathAfterUpdate)
-                    
-                    if attributes.representedElementCategory == .Cell {
-                        
-                        self.jsq_configureMessageCell(attributes)
-                    }
-                    
-                    attributes.frame = CGRectMake(0, collectionViewHeight, attributes.frame.width, attributes.frame.height)
-                    
-                    if self.springinessEnabled {
-                        
-                        if let springBehaviour = self.jsq_springBehavior(layoutAttributesItem: attributes) {
-                            
-                            self.dynamicAnimator.addBehavior(springBehaviour)
-                        }
+            if let indexPathAfterUpdate = updateItem.indexPathAfterUpdate {
+
+                if self.springinessEnabled && self.dynamicAnimator.layoutAttributesForCellAtIndexPath(indexPathAfterUpdate) != nil {
+
+                    return
+                }
+
+                let collectionViewHeight = self.messagesCollectionView.bounds.height
+                let attributes = JSQMessagesCollectionViewLayoutAttributes(forCellWithIndexPath: indexPathAfterUpdate)
+
+                if attributes.representedElementCategory == .Cell {
+
+                    self.jsq_configureMessageCell(attributes)
+                }
+
+                attributes.frame = CGRectMake(0, collectionViewHeight, attributes.frame.width, attributes.frame.height)
+
+                if self.springinessEnabled {
+
+                    if let springBehaviour = self.jsq_springBehavior(layoutAttributesItem: attributes) {
+
+                        self.dynamicAnimator.addBehavior(springBehaviour)
                     }
                 }
             }
         }
-        
+
     }
-    
+
     // MARK: - Invalidation utilities
-    
+
     func jsq_resetLayout() {
         
         self.messageBubbleCache.removeAllObjects()
@@ -475,13 +472,14 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
     func jsq_addNewlyVisibleBehaviors(visibleItems: [UICollectionViewLayoutAttributes]) {
         
         let newlyVisibleItems = visibleItems.filter { !self.visibleIndexPaths.contains($0.indexPath) }
-        let touchLocation = self.messagesCollectionView.panGestureRecognizer.locationInView(self.messagesCollectionView)
         
         for item in newlyVisibleItems {
             
-            let springBehavior = self.jsq_springBehavior(layoutAttributesItem: item)
-            self.dynamicAnimator.addBehavior(springBehavior)
-            self.visibleIndexPaths.insert(item.indexPath)
+            if let springBehavior = self.jsq_springBehavior(layoutAttributesItem: item) {
+
+                self.dynamicAnimator.addBehavior(springBehavior)
+                self.visibleIndexPaths.insert(item.indexPath)
+            }
         }
     }
     
@@ -489,7 +487,12 @@ public class JSQMessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         
         if let behaviors = self.dynamicAnimator.behaviors as? [UIAttachmentBehavior] {
         
-            let behaviorsToRemove = behaviors.filter { !visibleItemsIndexPath.contains($0.items[0].indexPath) }
+            let behaviorsToRemove = behaviors.filter {
+                if let layoutAttributes = $0.items.first as? UICollectionViewLayoutAttributes {
+                    return !visibleItemsIndexPath.contains(layoutAttributes.indexPath)
+                }
+                return false
+            }
             
             for item in behaviorsToRemove {
                 

@@ -48,8 +48,8 @@ public class JSQMessagesToolbarContentView: UIView {
                 self.leftBarButtonContainerView.hidden = false
                 self.leftHorizontalSpacingConstraint.constant = kJSQMessagesToolbarContentViewHorizontalSpacingDefault
                 self.leftBarButtonItemWidth = newValue.frame.width
-                
-                newValue.setTranslatesAutoresizingMaskIntoConstraints(false)
+
+                newValue.translatesAutoresizingMaskIntoConstraints = false
                 
                 self.leftBarButtonContainerView.addSubview(newValue)
                 self.leftBarButtonContainerView.jsq_pinAllEdgesOfSubview(newValue)
@@ -92,8 +92,8 @@ public class JSQMessagesToolbarContentView: UIView {
                 self.rightBarButtonContainerView.hidden = false
                 self.rightHorizontalSpacingConstraint.constant = kJSQMessagesToolbarContentViewHorizontalSpacingDefault
                 self.rightBarButtonItemWidth = newValue.frame.width
-                
-                newValue.setTranslatesAutoresizingMaskIntoConstraints(false)
+
+                newValue.translatesAutoresizingMaskIntoConstraints = false
                 
                 self.rightBarButtonContainerView.addSubview(newValue)
                 self.rightBarButtonContainerView.jsq_pinAllEdgesOfSubview(newValue)
@@ -130,8 +130,8 @@ public class JSQMessagesToolbarContentView: UIView {
     public override func awakeFromNib() {
         
         super.awakeFromNib()
-        
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+
+        self.translatesAutoresizingMaskIntoConstraints = false
         
         self.leftHorizontalSpacingConstraint.constant = kJSQMessagesToolbarContentViewHorizontalSpacingDefault
         self.rightHorizontalSpacingConstraint.constant = kJSQMessagesToolbarContentViewHorizontalSpacingDefault

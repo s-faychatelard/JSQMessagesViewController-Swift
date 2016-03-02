@@ -102,8 +102,8 @@ public class JSQMessagesCollectionViewCell: UICollectionViewCell {
                 
                 self.messageBubbleImageView?.removeFromSuperview()
                 self.textView?.removeFromSuperview()
-                
-                mediaView.setTranslatesAutoresizingMaskIntoConstraints(false)
+
+                mediaView.translatesAutoresizingMaskIntoConstraints = false
                 mediaView.frame = self.messageBubbleContainerView.bounds
                 
                 self.messageBubbleContainerView.addSubview(mediaView)
@@ -113,7 +113,7 @@ public class JSQMessagesCollectionViewCell: UICollectionViewCell {
                     
                     for var i=0; i<self.messageBubbleContainerView.subviews.count; i++ {
                         
-                        if self.messageBubbleContainerView.subviews[i] as? UIView != mediaView {
+                        if self.messageBubbleContainerView.subviews[i] != mediaView {
                             
                             self.messageBubbleContainerView.subviews[i].removeFromSuperview()
                         }
@@ -166,8 +166,8 @@ public class JSQMessagesCollectionViewCell: UICollectionViewCell {
     public override func awakeFromNib() {
         
         super.awakeFromNib()
-        
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+
+        self.translatesAutoresizingMaskIntoConstraints = false
         
         self.backgroundColor = UIColor.whiteColor()
         
@@ -214,12 +214,12 @@ public class JSQMessagesCollectionViewCell: UICollectionViewCell {
         self.avatarImageView.highlightedImage = nil
     }
     
-    public override func preferredLayoutAttributesFittingAttributes(layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes! {
+    public override func preferredLayoutAttributesFittingAttributes(layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         
         return layoutAttributes
     }
     
-    public override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes!) {
+    public override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
         
         super.applyLayoutAttributes(layoutAttributes)
         
@@ -314,7 +314,7 @@ public class JSQMessagesCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Utilities
     
-    func jsq_update(#constraint: NSLayoutConstraint, withConstant constant: CGFloat) {
+    func jsq_update(constraint constraint: NSLayoutConstraint, withConstant constant: CGFloat) {
         
         if constraint.constant == constant {
             return
@@ -347,7 +347,7 @@ public class JSQMessagesCollectionViewCell: UICollectionViewCell {
         
         let touchPoint = touch.locationInView(self)
         
-        if let gestureRecognizer = gestureRecognizer as? UILongPressGestureRecognizer {
+        if let _ = gestureRecognizer as? UILongPressGestureRecognizer {
             
             return CGRectContainsPoint(self.messageBubbleContainerView.frame, touchPoint)
         }

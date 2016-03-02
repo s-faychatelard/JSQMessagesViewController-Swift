@@ -163,6 +163,6 @@ public class JSQMediaItem: NSObject, JSQMessageMediaData, NSCoding, NSCopying {
     
     public func copyWithZone(zone: NSZone) -> AnyObject {
         
-        return self.dynamicType(maskAsOutgoing: self.appliesMediaViewMaskAsOutgoing)
+        return self.dynamicType.init(maskAsOutgoing: self.appliesMediaViewMaskAsOutgoing)
     }
 }

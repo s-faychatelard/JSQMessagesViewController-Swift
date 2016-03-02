@@ -34,7 +34,7 @@ extension UIImage {
         return self
     }
     
-    public class func jsq_bubbleImageFromBundle(#name: String) -> UIImage? {
+    public class func jsq_bubbleImageFromBundle(name name: String) -> UIImage? {
         
         if let bundle = NSBundle.jsq_messagesAssetBundle(),
             let path = bundle.pathForResource(name, ofType: "png", inDirectory: "Images") {
