@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		872061F512D0371DBDC0CC96 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6265859DEE77437D5C355C83 /* Pods.framework */; };
 		E4287F931B7CC547003E1072 /* JSQMessagesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E4287F921B7CC547003E1072 /* JSQMessagesViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E483D7CD1B84981F00C490B9 /* JSQMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E483D7CC1B84981F00C490B9 /* JSQMessagesAssets.bundle */; };
 		E483D7D01B84988200C490B9 /* NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483D7CF1B84988200C490B9 /* NSBundle.swift */; };
@@ -90,10 +91,6 @@
 		E4DB242B1B8710FC00E25818 /* JSQMessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4DB242A1B8710FC00E25818 /* JSQMessagesViewController.xib */; };
 		E4DB242D1B8732D100E25818 /* JSQMessagesInputToolbar_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB242C1B8732D100E25818 /* JSQMessagesInputToolbar_Tests.swift */; };
 		E4DB242F1B87352B00E25818 /* JSQMessagesViewController_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB242E1B87352B00E25818 /* JSQMessagesViewController_Tests.swift */; };
-		E4DB25041B8B033E00E25818 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4DB24D81B8B033D00E25818 /* Info.plist */; };
-		E4DB25051B8B033E00E25818 /* JSQSystemSoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB24D91B8B033D00E25818 /* JSQSystemSoundPlayer.swift */; };
-		E4DB25311B8B03A600E25818 /* SystemSoundHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E4DB252F1B8B03A600E25818 /* SystemSoundHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E4DB25321B8B03A600E25818 /* SystemSoundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DB25301B8B03A600E25818 /* SystemSoundHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +104,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		168C47B90E31C033599005F8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		6265859DEE77437D5C355C83 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C688A772A0AB66E3624F7F4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E4287F8D1B7CC547003E1072 /* JSQMessagesViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQMessagesViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4287F911B7CC547003E1072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4287F921B7CC547003E1072 /* JSQMessagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSQMessagesViewController.h; sourceTree = "<group>"; };
@@ -192,10 +192,6 @@
 		E4DB242A1B8710FC00E25818 /* JSQMessagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JSQMessagesViewController.xib; path = Controllers/JSQMessagesViewController.xib; sourceTree = "<group>"; };
 		E4DB242C1B8732D100E25818 /* JSQMessagesInputToolbar_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSQMessagesInputToolbar_Tests.swift; path = ViewTests/JSQMessagesInputToolbar_Tests.swift; sourceTree = "<group>"; };
 		E4DB242E1B87352B00E25818 /* JSQMessagesViewController_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSQMessagesViewController_Tests.swift; path = ControllerTests/JSQMessagesViewController_Tests.swift; sourceTree = "<group>"; };
-		E4DB24D81B8B033D00E25818 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E4DB24D91B8B033D00E25818 /* JSQSystemSoundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSQSystemSoundPlayer.swift; sourceTree = "<group>"; };
-		E4DB252F1B8B03A600E25818 /* SystemSoundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSoundHelper.h; sourceTree = "<group>"; };
-		E4DB25301B8B03A600E25818 /* SystemSoundHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSoundHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +201,7 @@
 			files = (
 				E483D8DB1B865DB300C490B9 /* CoreLocation.framework in Frameworks */,
 				E483D8D71B865DA000C490B9 /* MapKit.framework in Frameworks */,
+				872061F512D0371DBDC0CC96 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,13 +216,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		423B596FF425376ED92903F6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				168C47B90E31C033599005F8 /* Pods.debug.xcconfig */,
+				6C688A772A0AB66E3624F7F4 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C7FE79AF3183E8CCCCBE3BDB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6265859DEE77437D5C355C83 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E4287F831B7CC547003E1072 = {
 			isa = PBXGroup;
 			children = (
-				E4DB24D31B8B033D00E25818 /* 3rd party */,
 				E4287F8F1B7CC547003E1072 /* JSQMessagesViewController */,
 				E483D7D61B84994F00C490B9 /* JSQMessagesViewController Tests */,
 				E4287F8E1B7CC547003E1072 /* Products */,
+				423B596FF425376ED92903F6 /* Pods */,
+				C7FE79AF3183E8CCCCBE3BDB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -463,58 +478,6 @@
 			name = ControllerTests;
 			sourceTree = "<group>";
 		};
-		E4DB24D31B8B033D00E25818 /* 3rd party */ = {
-			isa = PBXGroup;
-			children = (
-				E4DB24D41B8B033D00E25818 /* JSQSystemSoundPlayer-Swift */,
-			);
-			name = "3rd party";
-			path = "JSQMessagesViewController/3rd party";
-			sourceTree = "<group>";
-		};
-		E4DB24D41B8B033D00E25818 /* JSQSystemSoundPlayer-Swift */ = {
-			isa = PBXGroup;
-			children = (
-				E4DB24D61B8B033D00E25818 /* JSQSystemSoundPlayer */,
-			);
-			path = "JSQSystemSoundPlayer-Swift";
-			sourceTree = "<group>";
-		};
-		E4DB24D61B8B033D00E25818 /* JSQSystemSoundPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				E4DB24D71B8B033D00E25818 /* JSQSystemSoundPlayer */,
-			);
-			path = JSQSystemSoundPlayer;
-			sourceTree = "<group>";
-		};
-		E4DB24D71B8B033D00E25818 /* JSQSystemSoundPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				E4DB25361B8B044000E25818 /* Helper */,
-				E4DB24D91B8B033D00E25818 /* JSQSystemSoundPlayer.swift */,
-				E4DB25351B8B042E00E25818 /* Supporting Files */,
-			);
-			path = JSQSystemSoundPlayer;
-			sourceTree = "<group>";
-		};
-		E4DB25351B8B042E00E25818 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E4DB24D81B8B033D00E25818 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E4DB25361B8B044000E25818 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				E4DB252F1B8B03A600E25818 /* SystemSoundHelper.h */,
-				E4DB25301B8B03A600E25818 /* SystemSoundHelper.m */,
-			);
-			name = Helper;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -523,7 +486,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4287F931B7CC547003E1072 /* JSQMessagesViewController.h in Headers */,
-				E4DB25311B8B03A600E25818 /* SystemSoundHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,10 +496,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4287FA31B7CC547003E1072 /* Build configuration list for PBXNativeTarget "JSQMessagesViewController" */;
 			buildPhases = (
+				E534A34F28BE615EEAB8DC80 /* Check Pods Manifest.lock */,
 				E4287F881B7CC547003E1072 /* Sources */,
 				E4287F891B7CC547003E1072 /* Frameworks */,
 				E4287F8A1B7CC547003E1072 /* Headers */,
 				E4287F8B1B7CC547003E1072 /* Resources */,
+				3A678BD88048BD725ED6E691 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -572,7 +536,9 @@
 		E4287F841B7CC547003E1072 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Dviance;
 				TargetAttributes = {
 					E4287F8C1B7CC547003E1072 = {
@@ -608,7 +574,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E483D8A11B8601F400C490B9 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
-				E4DB25041B8B033E00E25818 /* Info.plist in Resources */,
 				E483D7CD1B84981F00C490B9 /* JSQMessagesAssets.bundle in Resources */,
 				E483D8A31B8601F400C490B9 /* JSQMessagesToolbarContentView.xib in Resources */,
 				E483D8A41B8601F400C490B9 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
@@ -627,6 +592,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A678BD88048BD725ED6E691 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E534A34F28BE615EEAB8DC80 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E4287F881B7CC547003E1072 /* Sources */ = {
@@ -649,12 +647,10 @@
 				E483D84B1B84B8D300C490B9 /* JSQMessageMediaData.swift in Sources */,
 				E483D8551B84C34900C490B9 /* JSQMessagesBubbleImageFactory.swift in Sources */,
 				E483D8591B84DCC800C490B9 /* JSQMessageAvatarImageDataSource.swift in Sources */,
-				E4DB25321B8B03A600E25818 /* SystemSoundHelper.m in Sources */,
 				E483D8A61B86020900C490B9 /* JSQMessagesTypingIndicatorFooterView.swift in Sources */,
 				E483D8C21B86206900C490B9 /* JSQMessagesCollectionViewCell.swift in Sources */,
 				E483D8BB1B861A0B00C490B9 /* JSQMessagesInputToolbar.swift in Sources */,
 				E483D8B71B8618AE00C490B9 /* JSQMessagesLabel.swift in Sources */,
-				E4DB25051B8B033E00E25818 /* JSQSystemSoundPlayer.swift in Sources */,
 				E483D8AC1B86102A00C490B9 /* JSQMessagesLoadEarlierHeaderView.swift in Sources */,
 				E483D88C1B85D73500C490B9 /* JSQMessagesCollectionViewDelegateFlowLayout.swift in Sources */,
 				E483D7EC1B84A03A00C490B9 /* JSQMessagesViewController.swift in Sources */,
@@ -749,6 +745,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -818,6 +815,7 @@
 		};
 		E4287FA41B7CC547003E1072 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 168C47B90E31C033599005F8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -829,6 +827,7 @@
 				INFOPLIST_FILE = JSQMessagesViewController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.dviance.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -838,6 +837,7 @@
 		};
 		E4287FA51B7CC547003E1072 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C688A772A0AB66E3624F7F4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -849,6 +849,7 @@
 				INFOPLIST_FILE = JSQMessagesViewController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.dviance.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -883,6 +884,7 @@
 					XCTest,
 					"-ObjC",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.dviance.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
@@ -912,6 +914,7 @@
 					XCTest,
 					"-ObjC",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.dviance.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};

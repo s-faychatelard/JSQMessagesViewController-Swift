@@ -100,12 +100,12 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
     
     public class func nib() -> UINib {
         
-        return UINib(nibName: "\(JSQMessagesViewController.self)".jsq_className(), bundle: NSBundle(forClass: JSQMessagesViewController.self))
+        return UINib(nibName: "\(JSQMessagesViewController.self)".jsq_className(), bundle: NSBundle.jsq_messagesBundle())
     }
     
     public static func messagesViewController() -> JSQMessagesViewController {
 
-        return self(nibName: "\(JSQMessagesViewController.self)".jsq_className(), bundle: NSBundle(forClass: JSQMessagesViewController.self))
+        return self.init(nibName: "\(JSQMessagesViewController.self)".jsq_className(), bundle: NSBundle.jsq_messagesBundle())
     }
     
     // MARK: - View lifecycle
@@ -115,7 +115,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
     }
@@ -136,12 +136,12 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         
         if self.senderID == "" {
             
-            println("senderID must not be nil \(__FUNCTION__)")
+            print("senderID must not be nil \(__FUNCTION__)")
             abort()
         }
         if self.senderDisplayName == "" {
             
-            println("senderDisplayName must not be nil \(__FUNCTION__)")
+            print("senderDisplayName must not be nil \(__FUNCTION__)")
             abort()
         }
         
@@ -193,7 +193,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         
         super.didReceiveMemoryWarning()
         
-        println("MEMORY WARNING: \(__FUNCTION__)")
+        print("MEMORY WARNING: \(__FUNCTION__)")
     }
     
     // MARK: - View rotation
@@ -203,13 +203,13 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         return true
     }
     
-    public override func supportedInterfaceOrientations() -> Int {
+    public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
 
-            return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
+            return .AllButUpsideDown
         }
-        return Int(UIInterfaceOrientationMask.All.rawValue)
+        return .All
     }
     
     public override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
@@ -236,13 +236,13 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
     
     public func didPressSendButton(button: UIButton, withMessageText text: String, senderId: String, senderDisplayName: String, date: NSDate) {
         
-        println("ERROR: required method not implemented in subclass. Need to implement \(__FUNCTION__)")
+        print("ERROR: required method not implemented in subclass. Need to implement \(__FUNCTION__)")
         abort()
     }
 
     public func didPressAccessoryButton(sender: UIButton) {
         
-        println("ERROR: required method not implemented in subclass. Need to implement \(__FUNCTION__)")
+        print("ERROR: required method not implemented in subclass. Need to implement \(__FUNCTION__)")
         abort()
     }
     
@@ -251,7 +251,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         self.finishSendingMessage(animated: true)
     }
     
-    public func finishSendingMessage(#animated: Bool) {
+    public func finishSendingMessage(animated animated: Bool) {
         
         let textView = self.inputToolbar.contentView.textView
         textView.text = nil
@@ -275,7 +275,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         self.finishReceivingMessage(animated: true)
     }
     
-    public func finishReceivingMessage(#animated: Bool) {
+    public func finishReceivingMessage(animated animated: Bool) {
         
         self.showTypingIndicator = false
         
@@ -288,7 +288,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         }
     }
     
-    public func scrollToBottom(#animated: Bool) {
+    public func scrollToBottom(animated animated: Bool) {
         
         if self.collectionView.numberOfSections() == 0 {
             
@@ -323,19 +323,19 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
     
     public func collectionView(collectionView: JSQMessagesCollectionView, messageDataForItemAtIndexPath indexPath: NSIndexPath) -> JSQMessageData {
         
-        println("ERROR: required method not implemented: \(__FUNCTION__)")
+        print("ERROR: required method not implemented: \(__FUNCTION__)")
         abort()
     }
     
     public func collectionView(collectionView: JSQMessagesCollectionView, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath) -> JSQMessageBubbleImageDataSource {
         
-        println("ERROR: required method not implemented: \(__FUNCTION__)")
+        print("ERROR: required method not implemented: \(__FUNCTION__)")
         abort()
     }
     
     public func collectionView(collectionView: JSQMessagesCollectionView, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath) -> JSQMessageAvatarImageDataSource? {
         
-        println("ERROR: required method not implemented: \(__FUNCTION__)")
+        print("ERROR: required method not implemented: \(__FUNCTION__)")
         abort()
     }
     
@@ -514,7 +514,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         return true
     }
     
-    public func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) -> Bool {
+    public func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
         
         if action == Selector("copy:") {
             
@@ -524,7 +524,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         return false
     }
     
-    public func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) {
+    public func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
         
         if action == Selector("copy:") {
 
@@ -591,8 +591,8 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
     
     func jsq_currentlyComposedMessageText() -> String {
     
-        self.inputToolbar.contentView.textView.inputDelegate.selectionWillChange(self.inputToolbar.contentView.textView)
-        self.inputToolbar.contentView.textView.inputDelegate.selectionDidChange(self.inputToolbar.contentView.textView)
+        self.inputToolbar.contentView.textView.inputDelegate?.selectionWillChange(self.inputToolbar.contentView.textView)
+        self.inputToolbar.contentView.textView.inputDelegate?.selectionDidChange(self.inputToolbar.contentView.textView)
         
         return self.inputToolbar.contentView.textView.text.jsq_stringByTrimingWhitespace()
     }
@@ -678,8 +678,8 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
     }
     
     // MARK: - Key-value observing
-    
-    public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+
+    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         
         if context == self.kJSQMessagesKeyValueObservingContext {
             
@@ -687,8 +687,8 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
                 
                 if object == self.inputToolbar.contentView.textView && keyPath == "contentSize" {
                     
-                    if let oldContentSize = change[NSKeyValueChangeOldKey]?.CGSizeValue(),
-                        let newContentSize = change[NSKeyValueChangeNewKey]?.CGSizeValue() {
+                    if let oldContentSize = change?[NSKeyValueChangeOldKey]?.CGSizeValue(),
+                        let newContentSize = change?[NSKeyValueChangeNewKey]?.CGSizeValue() {
 
                         let dy = newContentSize.height - oldContentSize.height
                         
@@ -835,7 +835,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         }
     }
     
-    func jsq_scrollComposerTextViewToBottom(#animated: Bool) {
+    func jsq_scrollComposerTextViewToBottom(animated animated: Bool) {
         
         let textView = self.inputToolbar.contentView.textView
         let contentOffsetToShowLastLine = CGPointMake(0, textView.contentSize.height - CGRectGetHeight(textView.bounds))
@@ -860,7 +860,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
         self.jsq_setCollectionViewInsets(topValue: self.topLayoutGuide.length + self.topContentAdditionalInset, bottomValue: CGRectGetMaxY(self.collectionView.frame) - CGRectGetMinY(self.inputToolbar.frame))
     }
     
-    func jsq_setCollectionViewInsets(#topValue: CGFloat, bottomValue: CGFloat) {
+    func jsq_setCollectionViewInsets(topValue topValue: CGFloat, bottomValue: CGFloat) {
         
         let insets = UIEdgeInsetsMake(topValue, 0, bottomValue, 0)
         self.collectionView.contentInset = insets
@@ -881,7 +881,7 @@ public class JSQMessagesViewController: UIViewController, JSQMessagesCollectionV
             return
         }
         
-        self.inputToolbar.contentView.textView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.Old|NSKeyValueObservingOptions.New, context: self.kJSQMessagesKeyValueObservingContext)
+        self.inputToolbar.contentView.textView.addObserver(self, forKeyPath: "contentSize", options: [NSKeyValueObservingOptions.Old, NSKeyValueObservingOptions.New], context: self.kJSQMessagesKeyValueObservingContext)
         
         self.jsq_isObserving = true
     }

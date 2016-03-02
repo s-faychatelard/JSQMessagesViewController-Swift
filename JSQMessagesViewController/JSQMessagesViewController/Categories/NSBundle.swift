@@ -16,14 +16,9 @@ extension NSBundle {
     }
     
     public class func jsq_messagesAssetBundle() -> NSBundle? {
-        
-        if let bundleResourcePath = NSBundle.jsq_messagesBundle()?.resourcePath {
-            
-            let assetPath = bundleResourcePath.stringByAppendingPathComponent("JSQMessagesAssets.bundle")
-            return NSBundle(path: assetPath)
-        }
-        
-        return nil
+
+        let bundlePath = NSBundle.jsq_messagesBundle()!.pathForResource("JSQMessagesAssets", ofType: "bundle")
+        return NSBundle(path: bundlePath!)
     }
     
     public class func jsq_localizedStringForKey(key: String) -> String {

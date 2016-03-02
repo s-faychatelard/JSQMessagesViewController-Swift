@@ -23,6 +23,6 @@ public class JSQMessagesBubbleImage: NSObject, JSQMessageBubbleImageDataSource, 
     
     public func copyWithZone(zone: NSZone) -> AnyObject {
         
-        return self.dynamicType(bubbleImage: UIImage(CGImage: self.messageBubbleImage.CGImage)!, highlightedImage: UIImage(CGImage: self.messageBubbleHighlightedImage.CGImage)!)
+        return self.dynamicType.init(bubbleImage: UIImage(CGImage: self.messageBubbleImage.CGImage!), highlightedImage: UIImage(CGImage: self.messageBubbleHighlightedImage.CGImage!))
     }
 }

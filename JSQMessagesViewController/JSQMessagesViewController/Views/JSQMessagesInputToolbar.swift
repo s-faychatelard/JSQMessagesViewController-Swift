@@ -35,7 +35,7 @@ public class JSQMessagesInputToolbar: UIToolbar {
         
         super.awakeFromNib()
         
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.translatesAutoresizingMaskIntoConstraints = false
         
         let toolbarContentView = self.loadToolbarContentView()
         toolbarContentView.frame = self.frame
@@ -93,7 +93,7 @@ public class JSQMessagesInputToolbar: UIToolbar {
     
     // MARK: - Key-value observing
     
-    public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         
         if context == kJSQMessagesInputToolbarKeyValueObservingContext {
             
@@ -125,8 +125,8 @@ public class JSQMessagesInputToolbar: UIToolbar {
             return
         }
         
-        self.contentView.addObserver(self, forKeyPath: "leftBarButtonItem", options: NSKeyValueObservingOptions.allZeros, context: kJSQMessagesInputToolbarKeyValueObservingContext)
-        self.contentView.addObserver(self, forKeyPath: "rightBarButtonItem", options: NSKeyValueObservingOptions.allZeros, context: kJSQMessagesInputToolbarKeyValueObservingContext)
+        self.contentView.addObserver(self, forKeyPath: "leftBarButtonItem", options: NSKeyValueObservingOptions(), context: kJSQMessagesInputToolbarKeyValueObservingContext)
+        self.contentView.addObserver(self, forKeyPath: "rightBarButtonItem", options: NSKeyValueObservingOptions(), context: kJSQMessagesInputToolbarKeyValueObservingContext)
         
         self.jsq_isObserving = true
     }

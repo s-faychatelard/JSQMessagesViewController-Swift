@@ -29,7 +29,7 @@ public class JSQMessagesComposerTextView: UITextView {
     
     func jsq_configureTextView() {
         
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.translatesAutoresizingMaskIntoConstraints = false
         
         let cornerRadius: CGFloat = 6
         
@@ -69,7 +69,7 @@ public class JSQMessagesComposerTextView: UITextView {
         self.jsq_configureTextView()
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
         
@@ -174,7 +174,7 @@ public class JSQMessagesComposerTextView: UITextView {
     
     // MARK: - Utilities
     
-    func jsq_placeholderTextAttributes() -> [NSObject : AnyObject] {
+    func jsq_placeholderTextAttributes() -> [String : AnyObject] {
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = .ByTruncatingTail

@@ -12,13 +12,13 @@ public class JSQMessagesAvatarImageFactory {
     
     // MARK: - Public
     
-    public class func avatarImage(#placholder: UIImage, diameter: CGFloat) -> JSQMessagesAvatarImage {
+    public class func avatarImage(placholder placholder: UIImage, diameter: CGFloat) -> JSQMessagesAvatarImage {
         
         let circlePlaceholderImage = JSQMessagesAvatarImageFactory.jsq_circularImage(placholder, diameter: diameter, highlightedColor: nil)
         return JSQMessagesAvatarImage.avatar(placeholder: circlePlaceholderImage)
     }
     
-    public class func avatarImage(#image: UIImage, diameter: CGFloat) -> JSQMessagesAvatarImage {
+    public class func avatarImage(image image: UIImage, diameter: CGFloat) -> JSQMessagesAvatarImage {
         
         let avatar = JSQMessagesAvatarImageFactory.circularAvatar(image: image, diameter: diameter)
         let highlightedAvatar = JSQMessagesAvatarImageFactory.circularAvatar(highlightedImage: image, diameter: diameter)
@@ -26,17 +26,17 @@ public class JSQMessagesAvatarImageFactory {
         return JSQMessagesAvatarImage(avatarImage: avatar, highlightedImage: highlightedAvatar, placeholderImage: avatar)
     }
     
-    public class func circularAvatar(#image: UIImage, diameter: CGFloat) -> UIImage {
+    public class func circularAvatar(image image: UIImage, diameter: CGFloat) -> UIImage {
         
         return JSQMessagesAvatarImageFactory.jsq_circularImage(image, diameter: diameter, highlightedColor: nil)
     }
     
-    public class func circularAvatar(#highlightedImage: UIImage, diameter: CGFloat) -> UIImage {
+    public class func circularAvatar(highlightedImage highlightedImage: UIImage, diameter: CGFloat) -> UIImage {
         
         return JSQMessagesAvatarImageFactory.jsq_circularImage(highlightedImage, diameter: diameter, highlightedColor: UIColor(white: 0.1, alpha: 0.3))
     }
     
-    public class func avatarImage(#userInitials: String, backgroundColor: UIColor, textColor: UIColor, font: UIFont, diameter: CGFloat) -> JSQMessagesAvatarImage {
+    public class func avatarImage(userInitials userInitials: String, backgroundColor: UIColor, textColor: UIColor, font: UIFont, diameter: CGFloat) -> JSQMessagesAvatarImage {
         
         let avatar = JSQMessagesAvatarImageFactory.jsq_image(initials: userInitials, backgroundColor: backgroundColor, textColor: textColor, font: font, diameter: diameter)
         let highlightedAvatar = JSQMessagesAvatarImageFactory.jsq_circularImage(avatar, diameter: diameter, highlightedColor: UIColor(white: 0.1, alpha: 0.3))
@@ -46,16 +46,16 @@ public class JSQMessagesAvatarImageFactory {
     
     // MARK: - Private
     
-    private class func jsq_image(#initials: String, backgroundColor: UIColor, textColor: UIColor, font: UIFont, diameter: CGFloat) -> UIImage {
+    private class func jsq_image(initials initials: String, backgroundColor: UIColor, textColor: UIColor, font: UIFont, diameter: CGFloat) -> UIImage {
         
         let frame = CGRectMake(0, 0, diameter, diameter)
         
-        let attributes: [NSObject: AnyObject] = [
+        let attributes: [String: AnyObject] = [
             NSFontAttributeName: font,
             NSForegroundColorAttributeName: textColor
         ]
         
-        let options = NSStringDrawingOptions.UsesLineFragmentOrigin|NSStringDrawingOptions.UsesFontLeading
+        let options: NSStringDrawingOptions = [NSStringDrawingOptions.UsesLineFragmentOrigin, NSStringDrawingOptions.UsesFontLeading]
         let textFrame = (initials as NSString).boundingRectWithSize(frame.size, options: options, attributes: attributes, context: nil)
         
         let frameMidPoint = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame))

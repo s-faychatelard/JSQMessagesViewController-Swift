@@ -58,7 +58,7 @@ public class JSQMessagesKeyboardController: NSObject, UIGestureRecognizerDelegat
                 
                 if !self.jsq_isObserving {
                     
-                    keyboardView.addObserver(self, forKeyPath: "frame", options: NSKeyValueObservingOptions.Old|NSKeyValueObservingOptions.New, context: self.kJSQMessagesKeyboardControllerKeyValueObservingContext)
+                    keyboardView.addObserver(self, forKeyPath: "frame", options: [NSKeyValueObservingOptions.Old,NSKeyValueObservingOptions.New], context: self.kJSQMessagesKeyboardControllerKeyValueObservingContext)
                     
                     self.jsq_isObserving = true
                 }
@@ -151,7 +151,7 @@ public class JSQMessagesKeyboardController: NSObject, UIGestureRecognizerDelegat
     func jsq_handleKeyboardNotification(notification: NSNotification, completion: JSQAnimationCompletionBlock?) {
         
         if let userInfo = notification.userInfo,
-            let keyboardEndFrame = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue() {
+            let keyboardEndFrame = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue {
             
             if CGRectIsNull(keyboardEndFrame) {
                 
@@ -161,7 +161,7 @@ public class JSQMessagesKeyboardController: NSObject, UIGestureRecognizerDelegat
             if let animationCurve = userInfo[UIKeyboardAnimationCurveUserInfoKey]?.integerValue,
                 let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue {
             
-                let animationCurveOption = UIViewAnimationOptions(UInt(animationCurve << 16))
+                    let animationCurveOption = UIViewAnimationOptions(rawValue: UInt(animationCurve << 16))
                 let keyboardEndFrameConverted = self.contextView.convertRect(keyboardEndFrame, fromView: nil)
 
                 UIView.animateWithDuration(animationDuration, delay: 0, options: animationCurveOption, animations: { () -> Void in
@@ -178,13 +178,13 @@ public class JSQMessagesKeyboardController: NSObject, UIGestureRecognizerDelegat
     
     // MARK: - Utilities
     
-    func jsq_setKeyboardView(#hidden: Bool) {
+    func jsq_setKeyboardView(hidden hidden: Bool) {
         
         self.keyboardView?.hidden = hidden
         self.keyboardView?.userInteractionEnabled = !hidden
     }
     
-    func jsq_notifyKeyboardFrameNotification(#frame: CGRect) {
+    func jsq_notifyKeyboardFrameNotification(frame frame: CGRect) {
         
         self.delegate?.keyboardController(self, keyboardDidChangeFrame: frame)
         
@@ -199,8 +199,8 @@ public class JSQMessagesKeyboardController: NSObject, UIGestureRecognizerDelegat
     }
     
     // MARK: - Key-value observing
-    
-    public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+
+    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         
         if context == self.kJSQMessagesKeyboardControllerKeyValueObservingContext {
             
@@ -208,8 +208,8 @@ public class JSQMessagesKeyboardController: NSObject, UIGestureRecognizerDelegat
                 
                 if object == self.keyboardView && keyPath == "frame" {
                     
-                    if let oldKeyboardFrame = change[NSKeyValueChangeOldKey]?.CGRectValue(),
-                        let newKeyboardFrame = change[NSKeyValueChangeNewKey]?.CGRectValue() {
+                    if let oldKeyboardFrame = change?[NSKeyValueChangeOldKey]?.CGRectValue,
+                        let newKeyboardFrame = change?[NSKeyValueChangeNewKey]?.CGRectValue {
                     
                         if (CGRectIsNull(newKeyboardFrame) || CGRectEqualToRect(newKeyboardFrame, oldKeyboardFrame)) {
                             return;
@@ -265,7 +265,7 @@ public class JSQMessagesKeyboardController: NSObject, UIGestureRecognizerDelegat
                     return
                 }
                 
-                UIView.animateWithDuration(0, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState|UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
+                UIView.animateWithDuration(0, delay: 0, options: [UIViewAnimationOptions.BeginFromCurrentState,UIViewAnimationOptions.TransitionNone], animations: { () -> Void in
                     
                     self.keyboardView?.frame = newKeyboardViewFrame
                 }, completion: nil)
@@ -283,7 +283,7 @@ public class JSQMessagesKeyboardController: NSObject, UIGestureRecognizerDelegat
                 
                 newKeyboardViewFrame.origin.y = shouldHide ? contextViewWindowHeight : (contextViewWindowHeight - keyboardViewHeight)
             
-                let options = UIViewAnimationOptions.BeginFromCurrentState|UIViewAnimationOptions.CurveEaseOut
+                let options: UIViewAnimationOptions = [UIViewAnimationOptions.BeginFromCurrentState, UIViewAnimationOptions.CurveEaseOut]
                 UIView.animateWithDuration(0.25, delay: 0, options: options, animations: { () -> Void in
                     
                     self.keyboardView?.frame = newKeyboardViewFrame

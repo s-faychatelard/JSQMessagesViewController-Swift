@@ -34,7 +34,7 @@ public class JSQMessagesTypingIndicatorFooterView: UICollectionReusableView {
         
         super.awakeFromNib()
         
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.translatesAutoresizingMaskIntoConstraints = false
         
         self.backgroundColor = UIColor.clearColor()
         self.userInteractionEnabled = false

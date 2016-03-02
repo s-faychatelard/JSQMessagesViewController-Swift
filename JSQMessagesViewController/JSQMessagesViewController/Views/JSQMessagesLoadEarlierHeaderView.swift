@@ -36,7 +36,7 @@ public class JSQMessagesLoadEarlierHeaderView: UICollectionReusableView {
         
         super.awakeFromNib()
         
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.translatesAutoresizingMaskIntoConstraints = false
         
         self.backgroundColor = UIColor.clearColor()
         
